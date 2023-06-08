@@ -1,3 +1,21 @@
-XTerm.vt100.faceName: Hack:size=13
-XTerm.vt100.background: rgb:1a/1a/1a
-XTerm.vt100.foreground: rgb:ee/ee/ee
+#include "/home/bhavya/.xcolors/sexy1"
+
+*.foreground:	FOREGROUND
+*.background:	BACKGROUND
+*.cursorColor:	FOREGROUND
+*.color0:	COLOR0
+*.color8:	COLOR8
+*.color1:	COLOR1
+*.color9:	COLOR9
+*.color2:	COLOR2
+*.color10:	COLOR10
+*.color3:	COLOR3
+*.color11:	COLOR11
+*.color4:	COLOR4
+*.color12:	COLOR12
+*.color5:	COLOR5
+*.color13:	COLOR13
+*.color6:	COLOR6
+*.color14:	COLOR14
+*.color7:	COLOR7
+*.color15:	COLOR15

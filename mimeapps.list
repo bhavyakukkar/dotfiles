@@ -1,0 +1,4 @@
+
+[Default Applications]
+application/pdf=firefox.desktop
+inode/directory=firefox.desktop
