@@ -2,11 +2,14 @@
 <html>
 <!--
 todo:
-- ctrl+1|2|3|4|5 clicks on link at 1|2|3|4|5th position in workspace
+- 
  -->
 <head>
 <title>⌂</title>
 <style>
+:root {
+    --menu-width: 8;
+}
 html {
     overflow: hidden;
     font-family: monospace;
@@ -29,9 +32,14 @@ main {
 }
 #query {
     margin-top: auto;
+    margin-bottom: 40px;
     text-align: center;
 }
 #query input {
+    caret-color: #ffffff44;
+    width: 300px;
+    text-align: center;
+    font-size: 0.8em;
     border: 2px solid #888;
     outline: none;
     border-radius: 3px;
@@ -39,74 +47,38 @@ main {
     padding: 8px;
     color: white;
 }
-#workspaceswitch {    
-    margin-top: 50px;
-}
-#workspaceswitch input {
-	height: 0;
-	width: 0;
-	visibility: hidden;
-}
-#workspaceswitch label {
-	cursor: pointer;
-	text-indent: -9999px;
-	width: 50px;
-	height: 25px;
-	/*background: #ffffff0f;*/
-	display: block;
-    border: 2px solid #ffffff55;
-	border-radius: 25px;
-	position: relative;
-}
-#workspaceswitch label:after {
-	content: '';
-	position: absolute;
-	top: 4px;
-	left: 4px;
-	width: 17px;
-	height: 17px;
-	background: #fff;
-	border-radius: 19px;
-	transition: 0.3s ease;
-}
-#workspaceswitch input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
-}
-
-#workspaceswitch label:active:after {
-	width: 17px;
-}
-#menuwrapper {
-    border: 1px solid #eeeeff33;
-    border-radius: 5px;
-    width: 500px;
-    overflow: hidden;
-    margin-top: 20px;
-    padding: 10px;
-}
 #menu {
+    padding: 10px;
+    /*width: calc(calc(calc(calc(var(--menu-width) + 1) * 100px) + calc(calc(var(--menu-width) + 1) * 2px))); /* space just less than required to fit (menu-width + 1) items  */
+    width: calc(calc(var(--menu-width) + 1) * 100px); /* space just less than required to fit (menu-width + 1) items  */
+    height: calc(30px + calc(1px + calc(5px + 6px)));
+    overflow: hidden;
     position: relative;
     margin: 0;
-    border: 1px solid #ffffff00;
-    border-radius: 10px;
+    border: 1px solid #eeeeff33;
+    border-radius: 5px;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     transition: left 0.2s ease;
 }
-#menu > div {
+#menu > p {
+    flex: 90px 0 0;
+    height: 30px;
     display: flex;
-    justify-content: space-around;
-    flex: 500px 0 0;
-}
-#menu p {
-    padding: 5px 8px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff33;
+    padding: 5px 5px;
     cursor: pointer;
     font-size: 1.2em;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     margin: 0;
     border-radius: 2px;
+    transition: font-weight 0.1s ease;
 }
-#menu p:hover {
+#menu > p:hover {
     background-color: #ffffff22;
     font-weight: bold;
     color: white;
@@ -116,13 +88,6 @@ main {
     position: relative;
     letter-spacing: -1px;
     /*top: 16px;*/
-}
-#dragon2 {
-    font-size: 0.4em;
-    position: absolute;
-    left: 50px;
-    bottom: 50px;
-    color: #ffffff00;
 }
 #bandcampembed {
     position: absolute;
@@ -135,7 +100,7 @@ main {
 }
 #bandcampembed:hover { opacity: 0.8; }
 
-.youtube:hover { background-color: #ff0000aa !important; }
+/*.youtube:hover { background-color: #ff0000aa !important; }
 .discord:hover { background-color: #7289daaa !important; }
 .bandcamp:hover { background-color: #3d9aabaa !important; }
 .gmail:hover { background-color: #ea4235aa !important; }
@@ -145,7 +110,17 @@ main {
 .unixporn:hover { background-color: #ff4500aa !important; }
 .twitch:hover { background-color: #9146ffaa !important; }
 
-.h:hover { background-color: #aaaaaaaa !important; }
+.h:hover { background-color: #aaaaaaaa !important; }*/
+
+.youtube { background-color: #ff0000aa !important; }
+.discord { background-color: #7289daaa !important; }
+.bandcamp { background-color: #3d9aabaa !important; }
+.gmail { background-color: #ea4235aa !important; }
+.drive { background-color: #0065d9aa !important; }
+.overleaf { background-color: #45a247aa !important; }
+.leetcode { background-color: #eba33faa !important; }
+.unixporn { background-color: #ff4500aa !important; }
+.twitch { background-color: #9146ffaa !important; }
 
 </style>
 </head>
@@ -156,27 +131,17 @@ main {
 <input id='queryString'/>
 </div>
 
-<div id='workspaceswitch'>
-<input type="checkbox" id="workspace" />
-<label for="workspace"></label>
-</div>
-
-<div id='menuwrapper'>
-    <div id='menu' style='left: 0px;'>
-        <div>
-            <p class='gmail'>gmail</p>
-            <p class='bandcamp'>bandcamp</p>
-            <p class='overleaf'>overleaf</p>
-            <p class='drive'>drive</p>
-        </div>
-        <div>
-            <p class='youtube'>youtube</p>
-            <p class='discord'>discord</p>
-            <p class='twitch'>twitch</p>
-            <p class='unixporn'>unixporn</p>
-            <!--<p class='leetcode'>leetcode</p>-->
-        </div>
-    </div>
+<div id='menu'>
+    <p class='google' style='display: none;'>google</p>
+    <p class='gmail'>gmail</p>
+    <p class='bandcamp'>bandcamp</p>
+    <p class='overleaf'>overleaf</p>
+    <p class='drive'>drive</p>
+    <p class='youtube'>youtube</p>
+    <p class='discord'>discord</p>
+    <p class='twitch'>twitch</p>
+    <p class='unixporn'>unix</p>
+    <p class='leetcode'>leetcode</p>
 </div>
 
 <!--<div id='dragon'>
@@ -219,57 +184,9 @@ main {
 </div>
 </main>
 
-<div id="dragon2">
-<pre>
-                                        ,   ,
-                                        $,  $,     ,
-                                        "ss.$ss. .s'
-                                ,     .ss$$$$$$$$$$s,
-                                $. s$$$$$$$$$$$$$$`$$Ss
-                                "$$$$$$$$$$$$$$$$$$o$$$       ,
-                               s$$$$$$$$$$$$$$$$$$$$$$$$s,  ,s
-                              s$$$$$$$$$"$$$$$$""""$$$$$$"$$$$$,
-                              s$$$$$$$$$$s""$$$$ssssss"$$$$$$$$"
-                             s$$$$$$$$$$'         `"""ss"$"$s""
-                             s$$$$$$$$$$,              `"""""$  .s$$s
-                             s$$$$$$$$$$$$s,...               `s$$'  `
-                         `ssss$$$$$$$$$$$$$$$$$$$$####s.     .$$"$.   , s-
-                           `""""$$$$$$$$$$$$$$$$$$$$#####$$$$$$"     $.$'
-                                 "$$$$$$$$$$$$$$$$$$$$$####s""     .$$$|
-                                  "$$$$$$$$$$$$$$$$$$$$$$$$##s    .$$" $
-                                   $$""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"   `
-                                  $$"  "$"$$$$$$$$$$$$$$$$$$$$S""""'
-                             ,   ,"     '  $$$$$$$$$$$$$$$$####s
-                             $.          .s$$$$$$$$$$$$$$$$$####"
-                 ,           "$s.   ..ssS$$$$$$$$$$$$$$$$$$$####"
-                 $           .$$$S$$$$$$$$$$$$$$$$$$$$$$$$#####"
-                 Ss     ..sS$$$$$$$$$$$$$$$$$$$$$$$$$$$######""
-                  "$$sS$$$$$$$$$$$$$$$$$$$$$$$$$$$########"
-           ,      s$$$$$$$$$$$$$$$$$$$$$$$$#########""'
-           $    s$$$$$$$$$$$$$$$$$$$$$#######""'      s'         ,
-           $$..$$$$$$$$$$$$$$$$$$######"'       ....,$$....    ,$
-            "$$$$$$$$$$$$$$$######"' ,     .sS$$$$$$$$$$$$$$$$s$$
-              $$$$$$$$$$$$#####"     $, .s$$$$$$$$$$$$$$$$$$$$$$$$s.
-   )          $$$$$$$$$$$#####'      `$$$$$$$$$###########$$$$$$$$$$$.
-  ((          $$$$$$$$$$$#####       $$$$$$$$###"       "####$$$$$$$$$$
-  ) \         $$$$$$$$$$$$####.     $$$$$$###"             "###$$$$$$$$$   s'
- (   )        $$$$$$$$$$$$$####.   $$$$$###"                ####$$$$$$$$s$$'
- )  ( (       $$"$$$$$$$$$$$#####.$$$$$###' <!---Tua Xiong-->               .###$$$$$$$$$$"
- (  )  )   _,$"   $$$$$$$$$$$$######.$$##'                .###$$$$$$$$$$
- ) (  ( \.         "$$$$$$$$$$$$$#######,,,.          ..####$$$$$$$$$$$"
-(   )$ )  )        ,$$$$$$$$$$$$$$$$$$####################$$$$$$$$$$$"
-(   ($$  ( \     _sS"  `"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S$$,
- )  )$$$s ) )  .      .   `$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"'  `$$
-  (   $$$Ss/  .$,    .$,,s$$$$$$##S$$$$$$$$$$$$$$$$$$$$$$$$S""        '
-    \)_$$$$$$$$$$$$$$$$$$$$$$$##"  $$        `$$.        `$$.
-        `"S$$$$$$$$$$$$$$$$$#"      $          `$          `$
-            `"""""""""""""'         '           '           '
-</pre>
-</div>
-
-<div id="bandcampembed">
+<!--<div id="bandcampembed">
 <iframe style="border: 0; width: 170px; height: 170px;" src="https://bandcamp.com/EmbeddedPlayer/album=2591494906/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=3024919226/transparent=true/" seamless><a href="https://disconscious.bandcamp.com/album/hologram-plaza">Hologram Plaza by Disconscious</a></iframe>
-</div>
+</div>-->
 
 <script>
 function main() {
@@ -279,23 +196,20 @@ function main() {
     document.querySelector('main').visibility = "visible";
 
     const sites = {
+        google: ['file:///home/bhavya/Documents/dev/self/web/dotfiles/html/homepage.html', 'https://www.google.com/search?client=firefox-b-lm&q='],
         youtube: ['https://www.youtube.com', 'https://www.youtube.com/results?search_query='],
         discord: ['https://discord.com/app'],
         bandcamp: ['https://bandcamp.com/', 'https://bandcamp.com/search?item_type&q='],
         gmail: ['https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#search/'],
         drive: ['https://drive.google.com/drive/my-drive', 'https://drive.google.com/drive/search?q='],
         overleaf: ['https://www.overleaf.com/project'],
-        //leetcode: ['https://leetcode.com/problemset/all/', 'https://leetcode.com/problemset/all/?page=1&search='],
+        leetcode: ['https://leetcode.com/problemset/all/', 'https://leetcode.com/problemset/all/?page=1&search='],
         unixporn: ['https://www.reddit.com/r/unixporn/', 'https://www.reddit.com/r/unixporn/search/?restrict_sr=1&q='],
         twitch: ['https://www.twitch.tv/', 'https://www.twitch.tv/search?term='],
     };
 
-    document.querySelector('#workspaceswitch input').addEventListener('change', (event) => {
-        document.querySelector('#menu').style.left = event.currentTarget.checked ? '-500px' : '0px';
-    });
-
     for(let site in sites) {
-        document.querySelector(`#menu > div > .${site}`).addEventListener('click', () => {
+        document.querySelector(`#menu > .${site}`).addEventListener('click', () => {
             let query = document.querySelector('#queryString').value;
             /*document.body.style.opacity = "0";*/
             setTimeout(() => {
@@ -306,6 +220,13 @@ function main() {
             }, 200);
         });
     }
+
+    document.addEventListener('keydown', e => {
+        if(e.key === "Enter")
+            document.querySelector('#menu > .google').click()
+        else if(e.ctrlKey && e.key != "Control" && parseInt(e.key) >= 1 && parseInt(e.key) <= 8)
+            document.querySelectorAll('#menu > p')[parseInt(e.key) - 1].click()
+    });
 }
 document.addEventListener('onload', main());
 </script>
