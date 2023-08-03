@@ -63,24 +63,36 @@ main {
     gap: 10px;
     transition: left 0.2s ease;
 }
-#menu > p {
+#menu > div {
     flex: 90px 0 0;
     height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 1px solid #ffffff33;
-    padding: 5px 5px;
+    padding: 5px;
     cursor: pointer;
     font-size: 1.2em;
     /*text-decoration: underline;*/
-    margin: 0;
     border-radius: 2px;
-    transition: font-weight 0.1s ease;
+    transition: font-weight 0.01s ease;
 }
-#menu > p:hover {
+#menu > div > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5px 0;
+}
+#menu > div > span {
+    font-size: 0.8em;
+    /*flex: 0 0 0;
+    left: -25px;*/
+    position: relative;
+    top: -3px;
+    color: #ffffff99;
+    text-shadow: #00000066 2px -1px 6px;
+    font-weight: 900;
+}
+#menu > div:hover {
     background-color: #ffffff22;
-    font-weight: bold;
+    font-weight: 900;
     color: white;
 }
 #dragon {
@@ -119,7 +131,7 @@ main {
 .drive { background-color: #0065d9aa !important; }
 .overleaf { background-color: #45a247aa !important; }
 .leetcode { background-color: #eba33faa !important; }
-.unixporn { background-color: #ff4500aa !important; }
+.unix { background-color: #ff4500aa !important; }
 .twitch { background-color: #9146ffaa !important; }
 
 </style>
@@ -132,8 +144,7 @@ main {
 </div>
 
 <div id='menu'>
-    <p class='google' style='display: none;'>google</p>
-    <p class='gmail'>gmail</p>
+    <!--<p class='gmail'>gmail</p>
     <p class='bandcamp'>bandcamp</p>
     <p class='overleaf'>overleaf</p>
     <p class='drive'>drive</p>
@@ -142,27 +153,8 @@ main {
     <p class='twitch'>twitch</p>
     <p class='unixporn'>unix</p>
     <p class='leetcode'>leetcode</p>
+    <p class='google' style='display: none;'>google</p>-->
 </div>
-
-<!--<div id='dragon'>
-<pre>
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣤⡼⠀⢀⡀⣀⢱⡄⡀⠀⠀⠀⢲⣤⣤⣤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⡿⠛⠋⠁⣤⣿⣿⣿⣧⣷⠀⠀⠘⠉⠛⢻⣷⣿⣽⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢀⣴⣞⣽⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠠⣿⣿⡟⢻⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣟⢦⡀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣠⣿⡾⣿⣿⣿⣿⣿⠿⣻⣿⣿⡀⠀⠀⠀⢻⣿⣷⡀⠻⣧⣿⠆⠀⠀⠀⠀⣿⣿⣿⡻⣿⣿⣿⣿⣿⠿⣽⣦⡀⠀⠀⠀⠀
-⠀⠀⠀⠀⣼⠟⣩⣾⣿⣿⣿⢟⣵⣾⣿⣿⣿⣧⠀⠀⠀⠈⠿⣿⣿⣷⣈⠁⠀⠀⠀⠀⣰⣿⣿⣿⣿⣮⣟⢯⣿⣿⣷⣬⡻⣷⡄⠀⠀⠀
-⠀⠀⢀⡜⣡⣾⣿⢿⣿⣿⣿⣿⣿⢟⣵⣿⣿⣿⣷⣄⠀⣰⣿⣿⣿⣿⣿⣷⣄⠀⢀⣼⣿⣿⣿⣷⡹⣿⣿⣿⣿⣿⣿⢿⣿⣮⡳⡄⠀⠀
-⠀⢠⢟⣿⡿⠋⣠⣾⢿⣿⣿⠟⢃⣾⢟⣿⢿⣿⣿⣿⣾⡿⠟⠻⣿⣻⣿⣏⠻⣿⣾⣿⣿⣿⣿⡛⣿⡌⠻⣿⣿⡿⣿⣦⡙⢿⣿⡝⣆⠀
-⠀⢯⣿⠏⣠⠞⠋⠀⣠⡿⠋⢀⣿⠁⢸⡏⣿⠿⣿⣿⠃⢠⣴⣾⣿⣿⣿⡟⠀⠘⢹⣿⠟⣿⣾⣷⠈⣿⡄⠘⢿⣦⠀⠈⠻⣆⠙⣿⣜⠆
-⢀⣿⠃⡴⠃⢀⡠⠞⠋⠀⠀⠼⠋⠀⠸⡇⠻⠀⠈⠃⠀⣧⢋⣼⣿⣿⣿⣷⣆⠀⠈⠁⠀⠟⠁⡟⠀⠈⠻⠀⠀⠉⠳⢦⡀⠈⢣⠈⢿⡄
-⣸⠇⢠⣷⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠿⠿⠋⠀⢻⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢾⣆⠈⣷
-⡟⠀⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣶⣤⡀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⢹
-⡇⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠈⣿⣼⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃⢸
-⢡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠶⣶⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼
-⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡁⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣼⣀⣠⠂</pre>
-</div>-->
 
 <div id='dragon'>
 <pre>
@@ -196,20 +188,30 @@ function main() {
     document.querySelector('main').visibility = "visible";
 
     const sites = {
-        google: ['file:///home/bhavya/Documents/dev/self/web/dotfiles/html/homepage.html', 'https://www.google.com/search?client=firefox-b-lm&q='],
+        gmail: ['https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#search/'],
+        bandcamp: ['https://bandcamp.com/', 'https://bandcamp.com/search?item_type&q='],
+        overleaf: ['https://www.overleaf.com/project'],
+        drive: ['https://drive.google.com/drive/my-drive', 'https://drive.google.com/drive/search?q='],
         youtube: ['https://www.youtube.com', 'https://www.youtube.com/results?search_query='],
         discord: ['https://discord.com/app'],
-        bandcamp: ['https://bandcamp.com/', 'https://bandcamp.com/search?item_type&q='],
-        gmail: ['https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#search/'],
-        drive: ['https://drive.google.com/drive/my-drive', 'https://drive.google.com/drive/search?q='],
-        overleaf: ['https://www.overleaf.com/project'],
-        leetcode: ['https://leetcode.com/problemset/all/', 'https://leetcode.com/problemset/all/?page=1&search='],
-        unixporn: ['https://www.reddit.com/r/unixporn/', 'https://www.reddit.com/r/unixporn/search/?restrict_sr=1&q='],
         twitch: ['https://www.twitch.tv/', 'https://www.twitch.tv/search?term='],
-    };
+        unix: ['https://www.reddit.com/r/unixporn/', 'https://www.reddit.com/r/unixporn/search/?restrict_sr=1&q='],
 
+        /*google: ['file:///home/bhavya/Documents/dev/self/web/dotfiles/html/homepage.html', 'https://www.google.com/search?client=firefox-b-lm&q='],
+        leetcode: ['https://leetcode.com/problemset/all/', 'https://leetcode.com/problemset/all/?page=1&search='],*/
+    };
+    
+    let index = 1
     for(let site in sites) {
-        document.querySelector(`#menu > .${site}`).addEventListener('click', () => {
+        btn = document.createElement('div')
+            btn.classList = `btn ${site}`
+            p = document.createElement('p')
+                p.innerText = `${site}`
+                btn.appendChild(p)
+            span = document.createElement('span')
+                span.innerText = `${index++}`
+                btn.appendChild(span)
+        btn.addEventListener('click', () => {
             let query = document.querySelector('#queryString').value;
             /*document.body.style.opacity = "0";*/
             setTimeout(() => {
@@ -218,7 +220,8 @@ function main() {
                     query.length > 0 ? `${sites[site][1]}${query}` : sites[site][0]
                 ) : sites[site][0], '_blank')
             }, 200);
-        });
+        })
+        document.querySelector('#menu').appendChild(btn)
     }
 
     document.addEventListener('keydown', e => {
@@ -228,7 +231,7 @@ function main() {
             document.querySelectorAll('#menu > p')[parseInt(e.key) - 1].click()
     });
 }
-document.addEventListener('onload', main());
+document.addEventListener('onload', main())
 </script>
 
 </body>
