@@ -1,163 +1,87 @@
-<!DOCTYPE html>
-<html>
-<!--
-todo:
-- 
- -->
-<head>
-<title>⌂</title>
-<style>
+<!DOCTYPE html><html><script>
+
+// ____________
+// HEADER START {
+
+// ________________
+// 1. Search Engine
+// Pressing Enter with a query browses it at your preferred search engine:
+const search = 'https://www.google.com/search?q='
+//const search = 'https://duckduckgo.com/?q='
+
+
+// ______________________
+// 2. Search Common Sites
+// Websites will place on the bar in the following order:
+// Keybinds are: Ctrl+<key>
+const sites = [
+    // Entry format:
+    // ['<label>', '<keybind>', '<url if no query>', '<optional: prefix url if query>']
+    
+    ['gmail', '1', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#search/'],
+    ['bandcamp', '2', 'https://bandcamp.com/', 'https://bandcamp.com/search?item_type&q='],
+    ['overleaf', '3', 'https://www.overleaf.com/project'],
+    ['drive', '4', 'https://drive.google.com/drive/my-drive', 'https://drive.google.com/drive/search?q='],
+    ['youtube', '5', 'https://www.youtube.com', 'https://www.youtube.com/results?search_query='],
+    ['discord', '6', 'https://discord.com/app'],
+    ['twitch', '7', 'https://www.twitch.tv/', 'https://www.twitch.tv/search?term='],
+    ['unix', '8', 'https://www.reddit.com/r/unixporn/', 'https://www.reddit.com/r/unixporn/search/?restrict_sr=1&q='],
+    ['leetcode', '9', 'https://leetcode.com/problemset/all/', 'https://leetcode.com/problemset/all/?page=1&search='],
+]
+</script><style>
+
+/* ______________ */
+/* 3. Site Colors */
+.gmail { background-color: #ea4235aa; }
+.bandcamp { background-color: #3d9aabaa; }
+.overleaf { background-color: #45a247aa; }
+.drive { background-color: #0065d9aa; }
+.youtube { background-color: #ff0000aa; }
+.discord { background-color: #7289daaa; }
+.twitch { background-color: #9146ffaa; }
+.unix { background-color: #ff4500aa; }
+.leetcode { background-color: #eba33faa; }
+
+
+/* ____________________ */
+/* 4. CSS Options */
 :root {
-    --menu-width: 8;
-}
-html {
-    overflow: hidden;
-    font-family: monospace;
-    font-size: 1.3em;
-}
-body {
-    color: #ddd;
-    background-color: #111;
-    margin: 0;
-}
-main {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    transition: opacity 0.1s ease;
-    /*filter: blur(10px);*/
-}
-#query {
-    margin-top: auto;
-    margin-bottom: 40px;
-    text-align: center;
-}
-#query input {
-    caret-color: #ffffff44;
-    width: 300px;
-    text-align: center;
-    font-size: 0.8em;
-    border: 2px solid #888;
-    outline: none;
-    border-radius: 3px;
-    background-color: #ffffff00;
-    padding: 8px;
-    color: white;
-}
-#menu {
-    padding: 10px;
-    /*width: calc(calc(calc(calc(var(--menu-width) + 1) * 100px) + calc(calc(var(--menu-width) + 1) * 2px))); /* space just less than required to fit (menu-width + 1) items  */
-    width: calc(calc(var(--menu-width) + 1) * 100px); /* space just less than required to fit (menu-width + 1) items  */
-    height: calc(30px + calc(1px + calc(5px + 6px)));
-    overflow: hidden;
-    position: relative;
-    margin: 0;
-    border: 1px solid #eeeeff33;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    transition: left 0.2s ease;
-}
-#menu > div {
-    flex: 90px 0 0;
-    height: 30px;
-    border: 1px solid #ffffff33;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
-    /*text-decoration: underline;*/
-    border-radius: 2px;
-    transition: font-weight 0.01s ease;
-}
-#menu > div > p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.5px 0;
-}
-#menu > div > span {
-    font-size: 0.8em;
-    /*flex: 0 0 0;
-    left: -25px;*/
-    position: relative;
-    top: -3px;
-    color: #ffffff99;
-    text-shadow: #00000066 2px -1px 6px;
-    font-weight: 900;
-}
-#menu > div:hover {
-    background-color: #ffffff22;
-    font-weight: 900;
-    color: white;
-}
-#dragon {
-    margin-top: 50px;
-    position: relative;
-    letter-spacing: -1px;
-    /*top: 16px;*/
-}
-#bandcampembed {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    opacity: 0.3;
-    z-index: 10;
-    transition: opacity 0.4s ease;
-    transform: scale(0.9);
-}
-#bandcampembed:hover { opacity: 0.8; }
+    --global-font-size: 1.2em;
 
-/*.youtube:hover { background-color: #ff0000aa !important; }
-.discord:hover { background-color: #7289daaa !important; }
-.bandcamp:hover { background-color: #3d9aabaa !important; }
-.gmail:hover { background-color: #ea4235aa !important; }
-.drive:hover { background-color: #0065d9aa !important; }
-.overleaf:hover { background-color: #45a247aa !important; }
-.leetcode:hover { background-color: #eba33faa !important; }
-.unixporn:hover { background-color: #ff4500aa !important; }
-.twitch:hover { background-color: #9146ffaa !important; }
+    /* main menu block */
+    --menu-width: 9;            /* number of site blocks wide, excess will make menu scrollable */
+    --menu-end-padding: 11px;    /* formulation in css is annoying. i couldn't get it perfect so tweak this to add space after the last site in the menu */
 
-.h:hover { background-color: #aaaaaaaa !important; }*/
+    /* individual site blocks */
+    --site-font-size: 1.25em;
+    --site-padding: 5px;
+    --site-border: 1px;
+    --site-margin: 10px;
+    --site-width: 90px;
+    --site-height: 27px;
+    
+    /* keybind key indicators */
+    --key-font-size: 0.8em;
+    --key-opacity: 0.7;
+    --key-offset-x: calc(calc(var(--site-width) * 0.5) - 5px);
+    --key-offset-y: 7px;
+}
+</style><script>
 
-.youtube { background-color: #ff0000aa !important; }
-.discord { background-color: #7289daaa !important; }
-.bandcamp { background-color: #3d9aabaa !important; }
-.gmail { background-color: #ea4235aa !important; }
-.drive { background-color: #0065d9aa !important; }
-.overleaf { background-color: #45a247aa !important; }
-.leetcode { background-color: #eba33faa !important; }
-.unix { background-color: #ff4500aa !important; }
-.twitch { background-color: #9146ffaa !important; }
 
-</style>
-</head>
+// __________________
+// 5. Keybind Options
+// Keybind keys are defined with each site entry in the 'sites' array^
+// Browsers define lots of keybinds that will get captured before they reach this DOM
+// This is why I recommend using numbers instead of letters for the keys
 
-<body>
-<main>
-<div id='query'>
-<input id='queryString'/>
-</div>
+// However, if convenient, disable keybinds altogether:
+//keybinds = false
 
-<div id='menu'>
-    <!--<p class='gmail'>gmail</p>
-    <p class='bandcamp'>bandcamp</p>
-    <p class='overleaf'>overleaf</p>
-    <p class='drive'>drive</p>
-    <p class='youtube'>youtube</p>
-    <p class='discord'>discord</p>
-    <p class='twitch'>twitch</p>
-    <p class='unixporn'>unix</p>
-    <p class='leetcode'>leetcode</p>
-    <p class='google' style='display: none;'>google</p>-->
-</div>
 
-<div id='dragon'>
-<pre>
+// ____________
+// 6. Ascii Art
+asciiArt = `
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣤⡼⠀⢀⡀⣀⢱⡄⡀⠀⠀⠀⢲⣤⣤⣤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⡿⠛⠋⠁⣤⣿⣿⣿⣧⣷⠀⠀⠘⠉⠛⢻⣷⣿⣽⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⢀⣴⣞⣽⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠠⣿⣿⡟⢻⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣟⢦⡀⠀⠀⠀⠀⠀⠀
@@ -172,66 +96,202 @@ main {
 ⡇⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠈⣿⣼⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃⢸
 ⢡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠶⣶⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼
 ⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁</pre>
-</div>
-</main>
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁                              
+`
+</script><head>
 
-<!--<div id="bandcampembed">
-<iframe style="border: 0; width: 170px; height: 170px;" src="https://bandcamp.com/EmbeddedPlayer/album=2591494906/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=3024919226/transparent=true/" seamless><a href="https://disconscious.bandcamp.com/album/hologram-plaza">Hologram Plaza by Disconscious</a></iframe>
-</div>-->
+
+<!-- _____________ -->
+<!-- 7. Page Title -->
+<title>⌂</title>
+
+</head><body>
+
+
+<!-- ___________________________ -->
+<!-- 8. Custom Floating Elements -->
+
+    <!-- 8.1. Bandcamp Embedded Album -->
+    <!-- takes time to load each time, disable if needed -->
+    <!--<div id="bandcampembed">
+    <iframe style="border: 0; width: 170px; height: 170px;" src="https://bandcamp.com/EmbeddedPlayer/album=2591494906/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=3024919226/transparent=true/" seamless><a href="https://disconscious.bandcamp.com/album/hologram-plaza">Hologram Plaza by Disconscious</a></iframe>
+    </div>-->
+
+<!-- ____________ -->
+<!-- HEADER END } -->
+
+    <main>
+        <div id='query'><input id='queryString'/></div>
+        <div id='menu'></div>
+        <div id='asciiart'><pre></pre></div>
+    </main>
+<style>
+    html {
+        overflow: hidden;
+        font-family: monospace;
+        font-size: var(--global-font-size);
+    }
+    body {
+        color: #ddd;
+        background-color: #111;
+        margin: 0;
+    }
+    main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        transition: opacity 0.1s ease;
+    }
+    #query {
+        margin-top: auto;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    #query input {
+        caret-color: #ffffff44;
+        width: 300px;
+        text-align: center;
+        font-size: 0.8em;
+        border: 2px solid #888;
+        outline: none;
+        border-radius: 3px;
+        background-color: #ffffff00;
+        padding: 8px;
+        color: white;
+    }
+    #query input:hover, #query input:focus { border-color: #bbb; }
+    #menu {
+        padding: 10px calc(var(--site-margin) * 0.5);
+        width: calc(
+            calc(
+                calc(
+                    calc(
+                        calc(
+                            calc(
+                                var(--site-padding) + var(--site-border)
+                            ) * 2
+                        ) + var(--site-width)
+                    ) * var(--menu-width)
+                ) + calc(
+                    calc(
+                        var(--site-margin) * 2
+                    ) * calc(
+                        var(--menu-width)
+                    )
+                )
+            ) + var(--menu-end-padding)
+        );
+        height: calc(calc(var(--site-height) + calc(calc(var(--site-font-size) * 0.5) + var(--key-offset-y))) + calc(calc(5px + calc(1px + var(--site-border))) * 2));
+        overflow: scroll;
+        position: relative;
+        margin: 0;
+        border: 1px solid #eeeeff33;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        transition: left 0.2s ease;
+    }
+    #menu > div {
+        flex: var(--site-width) 0 0;
+        height: var(--site-height);
+        border: var(--site-border) solid #ffffff33;
+        margin: 0 var(--site-margin);
+        padding: var(--site-padding);
+        cursor: pointer;
+        font-size: var(--site-font-size);
+        border-radius: 2px;
+        transition: font-weight 0.01s ease;
+    }
+    #menu > div > p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5px 0;
+    }
+    #menu > div > span {
+        font-size: var(--key-font-size);
+        position: relative;
+        left: var(--key-offset-x);
+        top: var(--key-offset-y);
+        color: #ffffff;
+        opacity: var(--key-opacity);
+        text-shadow: #00000066 2px -1px 6px;
+    }
+    #menu > div:hover {
+        font-weight: 900;
+        color: white;
+    }
+    #asciiart {
+        margin-top: 50px;
+        position: relative;
+        letter-spacing: -1px;
+        line-height: 1.15em;
+    }
+    #bandcampembed {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        opacity: 0.3;
+        z-index: 10;
+        transition: opacity 0.4s ease;
+        transform: scale(0.9);
+    }
+    #bandcampembed:hover { opacity: 0.8; }  
+</style>
 
 <script>
-function main() {
-    document.querySelector('#queryString').focus();
-    document.querySelector('#queryString').value = '';
-    document.querySelector('main').opacity = "1";
-    document.querySelector('main').visibility = "visible";
+if(typeof keybinds === 'undefined')
+    keybinds = true
 
-    const sites = {
-        gmail: ['https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#search/'],
-        bandcamp: ['https://bandcamp.com/', 'https://bandcamp.com/search?item_type&q='],
-        overleaf: ['https://www.overleaf.com/project'],
-        drive: ['https://drive.google.com/drive/my-drive', 'https://drive.google.com/drive/search?q='],
-        youtube: ['https://www.youtube.com', 'https://www.youtube.com/results?search_query='],
-        discord: ['https://discord.com/app'],
-        twitch: ['https://www.twitch.tv/', 'https://www.twitch.tv/search?term='],
-        unix: ['https://www.reddit.com/r/unixporn/', 'https://www.reddit.com/r/unixporn/search/?restrict_sr=1&q='],
+if(typeof asciiArt !== 'undefined') {
+    document.querySelector('#asciiart > pre').innerHTML = asciiArt
+}
 
-        /*google: ['file:///home/bhavya/Documents/dev/self/web/dotfiles/html/homepage.html', 'https://www.google.com/search?client=firefox-b-lm&q='],
-        leetcode: ['https://leetcode.com/problemset/all/', 'https://leetcode.com/problemset/all/?page=1&search='],*/
-    };
+function mainFunction() {
+    document.querySelector('#queryString').focus()
+    document.querySelector('#queryString').value = ''
+    document.querySelector('main').opacity = "1"
+    document.querySelector('main').visibility = "visible"
     
-    let index = 1
-    for(let site in sites) {
+    let keyMap = {}
+    function makeButton(site) {
         btn = document.createElement('div')
-            btn.classList = `btn ${site}`
+            btn.classList = `btn ${site[0]}`
             p = document.createElement('p')
-                p.innerText = `${site}`
+                p.innerText = `${site[0]}`
                 btn.appendChild(p)
             span = document.createElement('span')
-                span.innerText = `${index++}`
-                btn.appendChild(span)
+                span.innerText = `${site[1]}`
+                if(keybinds)
+                    btn.appendChild(span)
         btn.addEventListener('click', () => {
-            let query = document.querySelector('#queryString').value;
-            /*document.body.style.opacity = "0";*/
+            let query = document.querySelector('#queryString').value
             setTimeout(() => {
-                document.body.visibility = "hidden";
-                window.open(sites[site].length >= 2 ? (
-                    query.length > 0 ? `${sites[site][1]}${query}` : sites[site][0]
-                ) : sites[site][0], '_blank')
-            }, 200);
+                window.open(site.length >= 4 ? (
+                    query.length > 0 ? `${site[3]}${query}` : site[2]
+                ) : site[2], '_blank')
+            }, 200)
         })
-        document.querySelector('#menu').appendChild(btn)
+        if(keybinds)
+            keyMap[site[1].toString()] = btn
+        return btn
     }
+    for(let site of sites)
+        document.querySelector('#menu').appendChild(makeButton(site))
+    let searchBtn = makeButton(['search', 'Enter', null, search])
 
     document.addEventListener('keydown', e => {
-        if(e.key === "Enter")
-            document.querySelector('#menu > .google').click()
-        else if(e.ctrlKey && e.key != "Control" && parseInt(e.key) >= 1 && parseInt(e.key) <= 8)
-            document.querySelectorAll('#menu > p')[parseInt(e.key) - 1].click()
-    });
+        if(e.key === "Enter" && document.querySelector('#queryString').value.length > 0)
+            searchBtn.click()
+        else if(keybinds && e.ctrlKey && e.key != "Control" && e.key in keyMap)
+            keyMap[e.key].click()
+    })
 }
-document.addEventListener('onload', main())
+
+mainFunction()
 </script>
 
 </body>
