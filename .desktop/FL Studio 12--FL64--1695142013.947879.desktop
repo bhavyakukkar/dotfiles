@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=FL64
+Exec=flatpak run --command=bottles-cli com.usebottles.bottles run -p FL64 -b 'FL Studio 12' -- %u
+Type=Application
+Terminal=false
+Categories=Application;
+Icon=/home/bhavya/.var/app/com.usebottles.bottles/data/bottles/bottles/FL-Studio-12/icons/FL64.png
+Comment=Launch FL64 using Bottles.
+StartupWMClass=FL64
+Actions=Configure;
+[Desktop Action Configure]
+Name=Configure in Bottles
+Exec=flatpak run com.usebottles.bottles -b 'FL Studio 12'
