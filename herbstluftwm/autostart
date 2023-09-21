@@ -247,8 +247,6 @@ hc keybind $Mod-Control-f set frame_gap 0  #no gaps
 
 ## rules:
 #
-### my system scripts
-hc rule class~'sys:.*' floating=on tag=home
 ### small floating term
 hc rule class=':*' floating=on floatplacement=center  #todo: function so first window of class places center, others place smart
 hc keybind $Mod-Shift-Return spawn xterm -class ':*'
@@ -258,14 +256,15 @@ hc keybind $Mod-Shift-Return spawn xterm -class ':*'
 #hc spawn polybar
 #~/.fehbg
 
-## startup layout:
+## themes && startup apps:
 #
 spawn_with_rules() {(
     herbstclient rule once pid=$BASHPID "${RULES[@]}"
     exec "$@"
     ) &
 }
-sysleft() {
+#
+astolfo() {
     feh --bg-scale --no-fehbg /home/bhavya/pictures/trash/414540-Astolfo-FateGrand-Order-Fate-Series-pink-hair.jpg
     hc load home '(split horizontal:0.26:0 (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)) (clients vertical:0))'
     RULES=( tag=home index=000 )
@@ -276,7 +275,7 @@ sysleft() {
     spawn_with_rules xterm -class 'todo' -e 'vim /home/bhavya/Documents/todo.md'
     
 }
-sysright() {
+soft1() {
     ~/.fehbg
     hc load home '(split horizontal:0.74:1 (clients vertical:0) (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)))'
     RULES=( tag=home index=100 )
@@ -287,9 +286,4 @@ sysright() {
     spawn_with_rules xterm -class 'todo' -e 'vim /home/bhavya/Documents/todo.md'
 
 }
-#sysleft && hc focus right
-sysright && hc focus left
-#syspgm() { hc spawn xterm -class 'sys:"$1"' -T $1 -g $2 -e $3; }
-#syspgm battery 62x17 "battery"
-#syspgm todo 124x24 "vim /home/bhavya/Documents/todo.md"
-#syspgm htop 124x16 "htop"
+soft1
