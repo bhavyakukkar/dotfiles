@@ -1,4 +1,4 @@
-#include "/home/bhavya/.xcolors/sexy1"
+#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/gruvbox"
 
 *.foreground:	FOREGROUND
 *.background:	BACKGROUND
@@ -19,3 +19,7 @@
 *.color14:	COLOR14
 *.color7:	COLOR7
 *.color15:	COLOR15
+
+xterm.*.BorderWidth: 7
+xterm*faceName: Hack
+xterm*faceSize: 9
