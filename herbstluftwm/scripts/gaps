@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ]
+then
+    herbstclient set frame_gap $(($(herbstclient get_attr settings.frame_gap) + 10))
+else
+    herbstclient set frame_gap $(($(herbstclient get_attr settings.frame_gap) - 10))
+fi

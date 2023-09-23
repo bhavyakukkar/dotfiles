@@ -28,7 +28,7 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
 #hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 #hc keybind $Mod-Return spawn "xterm" # use your $TERMINAL with xterm as fallback
-hc keybind $Mod-Return spawn xterm -class ':3' # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Return spawn xterm -T ':3' # use your $TERMINAL with xterm as fallback
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -201,11 +201,11 @@ hc unlock
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(hc list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" "$monitor" &
-done
+#[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+#for monitor in $(hc list_monitors | cut -d: -f1) ; do
+#    # start it on each monitor
+#    "$panel" "$monitor" &
+#done
 
 
 
@@ -241,49 +241,55 @@ hc keybind XF86AudioMute spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
 #
 ### herbstluft shortcuts
 #### manage gaps
-hc keybind $Mod-Control-h set frame_gap 60 #large gaps
-hc keybind $Mod-Control-g set frame_gap 10 #small gaps
-hc keybind $Mod-Control-f set frame_gap 0  #no gaps
+#hc keybind $Mod-Control-h set frame_gap 60 #large gaps
+#hc keybind $Mod-Control-g set frame_gap 10 #small gaps
+#hc keybind $Mod-Control-f set frame_gap 0  #no gaps
+
+hc keybind $Mod-Control-g spawn ~/.config/herbstluftwm/scripts/gaps
+hc keybind $Mod-Control-f spawn ~/.config/herbstluftwm/scripts/gaps 1
+
+
 
 ## rules:
 #
 ### small floating term
-hc rule class=':*' floating=on floatplacement=center  #todo: function so first window of class places center, others place smart
-hc keybind $Mod-Shift-Return spawn xterm -class ':*'
-
-## start programs:
-#
-#hc spawn polybar
-#~/.fehbg
-
-## themes && startup apps:
-#
+hc rule title=':*' floating=on floatplacement=center  #todo: function so first window of class places center, others place smart
+hc keybind $Mod-Shift-Return spawn xterm -T ':*'
 spawn_with_rules() {(
-    herbstclient rule once pid=$BASHPID "${RULES[@]}"
+    herbstclient rule once pid=$BASHPID maxage=10 "${RULES[@]}"
     exec "$@"
     ) &
 }
+
+## themes:
 #
 astolfo() {
     feh --bg-scale --no-fehbg /home/bhavya/pictures/trash/414540-Astolfo-FateGrand-Order-Fate-Series-pink-hair.jpg
     hc load home '(split horizontal:0.26:0 (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)) (clients vertical:0))'
     RULES=( tag=home index=000 )
-    spawn_with_rules xterm -class 'battery' -e 'battery'
+    spawn_with_rules xterm -T 'battery' -e 'battery'
     RULES=( tag=home index=001 )
-    spawn_with_rules xterm -class 'htop'  -e 'htop'
+    spawn_with_rules xterm -T 'htop'  -e 'htop'
     RULES=( tag=home index=01  )
-    spawn_with_rules xterm -class 'todo' -e 'vim /home/bhavya/Documents/todo.md'
+    spawn_with_rules xterm -T 'todo' -e 'vim /home/bhavya/Documents/todo.md'
     
 }
 soft1() {
     ~/.fehbg
     hc load home '(split horizontal:0.74:1 (clients vertical:0) (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)))'
     RULES=( tag=home index=100 )
-    spawn_with_rules xterm -class 'battery' -e 'battery'
+    spawn_with_rules xterm -T 'battery' -e 'battery'
     RULES=( tag=home index=101 )
-    spawn_with_rules xterm -class 'htop'  -e 'htop'
+    spawn_with_rules xterm -T 'htop'  -e 'htop'
     RULES=( tag=home index=11  )
-    spawn_with_rules xterm -class 'todo' -e 'vim /home/bhavya/Documents/todo.md'
+    spawn_with_rules xterm -T 'todo' -e 'vim /home/bhavya/Documents/todo.md'
 
 }
-soft1
+
+## start programs:
+#
+if hc silent new_attr bool my_not_first_autostart ; then
+	hc spawn polybar &
+    soft1 &
+    xinput set-prop 'ELAN1300:00 04F3:3057 Touchpad' 364 1 &
+fi
