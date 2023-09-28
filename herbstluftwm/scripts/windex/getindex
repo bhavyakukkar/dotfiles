@@ -1,0 +1,18 @@
+#!/bin/sh
+case "$1" in
+    "1")
+        index=00
+        ;;
+    "2")
+        index=10
+        ;;
+    "3")
+        index=01
+        ;;
+    "4")
+        index=11
+        ;;
+esac
+
+
+echo "$index"

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+spawn_with_rules() {(
+    herbstclient rule once pid=$BASHPID maxage=10 "${RULES[@]}"
+    exec "$@"
+    ) &
+}
+
+if [ "$(herbstclient get_attr tags.focus.name)" == "dev" ] ; then
+    RULES=( index="$(~/.config/herbstluftwm/scripts/windex/getindex "$1")" )
+    spawn_with_rules xterm -e a
+else
+    herbstclient use_index "$2"
+fi
+

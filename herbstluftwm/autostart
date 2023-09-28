@@ -79,7 +79,8 @@ for i in "${!tag_names[@]}" ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
     if [ -n "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
+        hc keybind "$Mod-$key" spawn ~/.config/herbstluftwm/scripts/windex/tagaction $key $i
+        #hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
     fi
 done
@@ -130,7 +131,7 @@ hc set frame_border_width 1
 hc set show_frame_decorations 'focused_if_multiple'
 hc set frame_bg_transparent on
 hc set frame_transparent_width 5
-hc set frame_gap 10
+hc set frame_gap 20
 
 #hc attr theme.title_height 15
 hc attr theme.title_height 0
@@ -276,7 +277,7 @@ astolfo() {
 }
 soft1() {
     ~/.fehbg
-    hc load home '(split horizontal:0.74:1 (clients vertical:0) (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)))'
+    hc load home '(split horizontal:0.72:1 (clients vertical:0) (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)))'
     RULES=( tag=home index=100 )
     spawn_with_rules xterm -T 'battery' -e 'battery'
     RULES=( tag=home index=101 )
