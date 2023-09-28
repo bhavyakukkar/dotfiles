@@ -1,4 +1,4 @@
-#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/gruvbox"
+#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/alduin"
 
 *.foreground:	FOREGROUND
 *.background:	BACKGROUND

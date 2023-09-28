@@ -7,7 +7,7 @@
 end
 
 ColorMyPencils()]]--
-require("gruvbox").setup({
+--[[require("gruvbox").setup({
     contrast = "",
     palette_overrides = {
         --bright_orange = "#d5c4a1",
@@ -16,4 +16,5 @@ require("gruvbox").setup({
     }
 })
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme gruvbox]])]]--
+vim.cmd([[colorscheme solarized]])
