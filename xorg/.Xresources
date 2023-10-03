@@ -1,4 +1,4 @@
-#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/alduin"
+#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/PaperColor-light"
 
 *.foreground:	FOREGROUND
 *.background:	BACKGROUND
@@ -21,5 +21,5 @@
 *.color15:	COLOR15
 
 xterm.*.BorderWidth: 7
-xterm*faceName: Hack
-xterm*faceSize: 9
+xterm*faceName: Fira Code
+xterm*faceSize: 10
