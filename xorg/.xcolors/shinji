@@ -1,0 +1,24 @@
+; original theme (except background, color0, color8): https://github.com/nanotech/jellybeans.vim
+
+#define BACKGROUND #212d13
+#define FOREGROUND #adadad
+
+; if i ever need the original black anymore: #3b3b3b
+
+#define COLOR0 #212d13
+#define COLOR1 #cf6a4c
+#define COLOR2 #99ad6a
+#define COLOR3 #d8ad4c
+#define COLOR4 #597bc5
+#define COLOR5 #a037b0
+#define COLOR6 #71b9f8
+#define COLOR7 #adadad
+
+#define COLOR8 #696969
+#define COLOR9 #cf6a4c
+#define COLOR10 #99ad6a
+#define COLOR11 #d8ad4c
+#define COLOR12 #597bc5
+#define COLOR13 #a037b0
+#define COLOR14 #71b9f8
+#define COLOR15 #adadad
