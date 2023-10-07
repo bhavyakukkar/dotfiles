@@ -28,7 +28,7 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
 #hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 #hc keybind $Mod-Return spawn "xterm" # use your $TERMINAL with xterm as fallback
-hc keybind $Mod-Return spawn xterm -T ':3' # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Return spawn alacritty -T ':3' # use your $TERMINAL with xterm as fallback
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -122,22 +122,44 @@ hc keybind $Mod-i jumpto urgent
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-
-hc attr theme.active.color '#999999'
-hc attr theme.normal.color '#cccccc'
-hc attr theme.urgent.color '#ffa500'
+hc attr theme.inner_color '#999999'
 hc attr theme.inner_width 3
-hc attr theme.inner_color '#dddddd'
 hc attr theme.border_width 6
+hc attr theme.background_color '#121212'
+hc attr theme.tab_color '#1F1F1Fdd'
+hc attr theme.background_color '#141414'
+
+hc attr theme.title_height 15
+hc attr theme.title_when always
+hc attr theme.title_font 'Fira Code Medium:pixelsize=12'
+hc attr theme.title_depth 3  # space below the title's baseline
+hc attr theme.title_color '#606060'
+
+hc attr theme.active.color '#cccccc'
+hc attr theme.active.inner_color '#dddddd'
+hc attr theme.active.outer_color '#000000'
+hc attr theme.active.title_color '#111111'
+hc attr theme.active.tab_color '#2C2C2Cdd'
+hc attr theme.active.tab_outer_color '#6C6C6Cdd'
+hc attr theme.active.tab_title_color '#ababab'
+
+hc attr theme.normal.color '#999999'
+hc attr theme.normal.inner_color '#999999'
+hc attr theme.normal.outer_color
+hc attr theme.normal.title_color '#dddddd'
+
+hc attr theme.urgent.color '#ffa500'
+hc attr theme.urgent.inner_color '#8F8F8F'
+
+hc attr theme.tiling.outer_width 1
+
 hc attr theme.floating.border_width 6
 hc attr theme.floating.outer_width 0
 hc attr theme.floating.outer_color '#000000'
-hc attr theme.active.inner_color '#999999'
-hc attr theme.active.outer_color '#cccccc'
-hc attr theme.background_color '#121212'
 
 #hc pad :0 16 0 0 0
 
+## frames
 hc set frame_bg_normal_color 'transparent'
 hc set frame_bg_active_color 'transparent'
 hc set frame_border_width 0
@@ -146,43 +168,7 @@ hc set frame_bg_transparent on
 hc set frame_transparent_width 5
 hc set frame_gap 30
 
-hc attr theme.title_height 15
-hc attr theme.title_when always
-# hc attr theme.title_font 'Dejavu Sans:pixelsize=12'  # example using Xft
-hc attr theme.title_font 'Fira Code Medium:pixelsize=12'
-hc attr theme.title_depth 4  # space below the title's baseline
-#hc attr theme.active.color '#345F0Cef'
-
-#hc attr theme.active.color '#bbbbbbef'
-hc attr theme.title_color '#606060'
-hc attr theme.active.title_color '#ffffff'
-#hc attr theme.normal.color '#323232dd'
-#hc attr theme.urgent.color '#7811A1dd'
-#hc attr theme.urgent.color '#636363dd'
-hc attr theme.tab_color '#1F1F1Fdd'
-hc attr theme.active.tab_color '#2C2C2Cdd'
-hc attr theme.active.tab_outer_color '#6C6C6Cdd'
-hc attr theme.active.tab_title_color '#ababab'
-hc attr theme.normal.title_color '#898989'
-#hc attr theme.inner_width 1
-#hc attr theme.inner_color black
-#hc attr theme.border_width 5
-#hc attr theme.floating.border_width 3
-#hc attr theme.floating.outer_width 1
-#hc attr theme.floating.outer_color black
-#hc attr theme.active.inner_color '#789161'
-#hc attr theme.active.inner_color '#787878'
-#hc attr theme.urgent.inner_color '#9A65B0'
-hc attr theme.urgent.inner_color '#8F8F8F'
-#hc attr theme.normal.inner_color '#606060'
-# copy inner color to outer_color
-#for state in active urgent normal ; do
-#    hc substitute C theme.${state}.inner_color \
-#        attr theme.${state}.outer_color C
-#done
-hc attr theme.tiling.outer_width 1
-hc attr theme.background_color '#141414'
-
+## windows
 hc set window_gap 0
 hc set frame_padding 0
 hc set smart_window_surroundings off
@@ -237,7 +223,7 @@ hc set tabbed_max on
 #### fresh terminal: close & open xterm
 hc keybind $Mod-Control-c chain , close , spawn xterm
 #### dmenu: application launcher
-hc keybind $Mod-p spawn dmenu_run -b -i -hp firefox,scrot
+hc keybind $Mod-p spawn dmenu_run -b -i -hp firefox,scrot,tilix
 ### toggle polybar on/off
 hc keybind $Mod-Control-b spawn togglepolybar
 #### network-manager
@@ -246,7 +232,7 @@ hc keybind $Mod-Control-n spawn nm-connection-editor
 #### slock: screenlocker
 hc keybind $Mod-Control-l spawn slock
 #### edit this file
-hc keybind $Mod-Shift-o spawn xterm -e vim /home/bhavya/.config/herbstluftwm/autostart
+hc keybind $Mod-Shift-o spawn alacritty -e vim /home/bhavya/.config/herbstluftwm/autostart
 #### volume control
 hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume @DEFAULT_SINK@ +5%
 hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -261,7 +247,7 @@ hc keybind $Mod-Control-f spawn ~/.config/herbstluftwm/scripts/gaps 1
 #
 ### small floating term
 hc rule title=':*' floating=on floatplacement=center  #todo: function so first window of class places center, others place smart
-hc keybind $Mod-Shift-Return spawn xterm -T ':*'
+hc keybind $Mod-Shift-Return spawn alacritty -T ':*'
 spawn_with_rules() {(
     herbstclient rule once pid=$BASHPID maxage=10 "${RULES[@]}"
     exec "$@"
@@ -274,33 +260,33 @@ astolfo() {
     feh --bg-scale --no-fehbg /home/bhavya/pictures/trash/414540-Astolfo-FateGrand-Order-Fate-Series-pink-hair.jpg
     hc load home '(split horizontal:0.26:0 (split vertical:0.56:1 (split vertical:0.52:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)) (clients vertical:0))'
     RULES=( tag=home index=000 )
-    spawn_with_rules xterm -T 'battery' -e 'battery'
+    spawn_with_rules alacritty -T 'battery' -e battery
     RULES=( tag=home index=001 )
-    spawn_with_rules xterm -T 'htop'  -e 'htop'
+    spawn_with_rules alacritty -T 'htop'  -e htop
     RULES=( tag=home index=01  )
-    spawn_with_rules xterm -T 'todo' -e 'vim /home/bhavya/Documents/todo.md'
+    spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
     
 }
 soft1() {
     ~/.fehbg
     hc load home '(split horizontal:0.7:1 (clients vertical:0) (split vertical:0.54:1 (split vertical:0.54:1 (clients vertical:0) (clients vertical:0)) (clients vertical:0)))'
     RULES=( tag=home index=100 )
-    spawn_with_rules xterm -T 'battery' -e 'battery'
+    spawn_with_rules alacritty -T 'battery' -e battery
     RULES=( tag=home index=101 )
-    spawn_with_rules xterm -T 'htop'  -e 'htop'
+    spawn_with_rules alacritty -T 'htop'  -e htop
     RULES=( tag=home index=11  )
-    spawn_with_rules xterm -T 'todo' -e 'vim /home/bhavya/Documents/todo.md'
+    spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
 
 }
 shinji() {
     feh --bg-fill --no-fehbg '/home/bhavya/pictures/trash/rNWtdEv.jpeg' 
     hc load home '(split horizontal:0.78:0 (split horizontal:0.28:1 (clients vertical:0) (clients horizontal:0)) (split vertical:0.5:0 (clients vertical:0) (clients vertical:0)))'
     RULES=( tag=home index=00  )
-    spawn_with_rules xterm -T 'todo' -e 'vim /home/bhavya/Documents/todo.md'
+    spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
     RULES=( tag=home index=10 )
-    spawn_with_rules xterm -T 'battery' -e 'battery'
+    spawn_with_rules alacritty -T 'battery' -e battery
     RULES=( tag=home index=11 )
-    spawn_with_rules xterm -T 'htop'  -e 'htop'
+    spawn_with_rules alacritty -T 'htop'  -e htop
 }
 
 ## start programs:
