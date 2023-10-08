@@ -20,7 +20,7 @@ fonts = "alligator alphabet avatar banner3-D basic bell big bulbhead colossal co
 
 def getPerc():
     s = po('acpi')
-    r = se('1?[0-9]?[1-9]%', s)
+    r = se('1?[0-9]?[0-9]%', s)
     charging = True if se(' [Cc]harging', s) else False
     return s[r.regs[0][0]:(r.regs[0][1]-(1 if not includePercSymbol else 0))], charging
 
