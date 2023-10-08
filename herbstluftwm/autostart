@@ -171,7 +171,7 @@ hc set frame_gap 30
 ## windows
 hc set window_gap 0
 hc set frame_padding 0
-hc set smart_window_surroundings off
+hc set smart_window_surroundings on
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 
@@ -208,9 +208,9 @@ panel=~/.config/herbstluftwm/panel.sh
 
 
 
-###########################
-# My Custom Configuration #
-###########################
+#############################
+## My Custom Configuration ##
+#############################
 
 ## settings:
 #
@@ -225,7 +225,11 @@ hc keybind $Mod-Control-c chain , close , spawn xterm
 #### dmenu: application launcher
 hc keybind $Mod-p spawn dmenu_run -b -i -hp firefox,scrot,tilix
 ### toggle polybar on/off
-hc keybind $Mod-Control-b spawn togglepolybar
+hc keybind $Mod-Control-b spawn ~/.config/herbstluftwm/scripts/togglepolybar
+### toggle picom on/off
+hc keybind $Mod-Control-p spawn ~/.config/herbstluftwm/scripts/togglepicom
+### toggle smart-window-surroundings
+hc keybind $Mod-Control-w set smart_window_surroundings toggle
 #### network-manager
 hc rule class="Nm-connection-editor" floating=on floatplacement=center
 hc keybind $Mod-Control-n spawn nm-connection-editor

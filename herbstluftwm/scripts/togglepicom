@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if herbstclient silent get_attr my_picom_is_on ; then
+	pkill picom
+	herbstclient remove_attr my_picom_is_on
+else
+	herbstclient spawn picom
+	herbstclient new_attr bool my_picom_is_on
+fi
