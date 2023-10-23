@@ -135,7 +135,7 @@ hc attr theme.title_font 'Fira Code Medium:pixelsize=12'
 hc attr theme.title_depth 3  # space below the title's baseline
 hc attr theme.title_color '#606060'
 
-hc attr theme.active.color '#cccccc'
+hc attr theme.active.color '#e3e3e3'
 hc attr theme.active.inner_color '#dddddd'
 hc attr theme.active.outer_color '#000000'
 hc attr theme.active.title_color '#111111'
@@ -145,8 +145,11 @@ hc attr theme.active.tab_title_color '#ababab'
 
 hc attr theme.normal.color '#999999'
 hc attr theme.normal.inner_color '#999999'
-hc attr theme.normal.outer_color
+#hc attr theme.normal.outer_color
 hc attr theme.normal.title_color '#dddddd'
+
+hc attr theme.minimal.border_width 4
+hc attr theme.minimal.active.color "#a0a0a0"
 
 hc attr theme.urgent.color '#ffa500'
 hc attr theme.urgent.inner_color '#8F8F8F'
@@ -160,12 +163,15 @@ hc attr theme.floating.outer_color '#000000'
 #hc pad :0 16 0 0 0
 
 ## frames
-hc set frame_bg_normal_color 'transparent'
-hc set frame_bg_active_color 'transparent'
+hc set frame_bg_normal_color '#ffffff00'
+hc set frame_bg_active_color '#000000'
 hc set frame_border_width 0
+hc set frame_border_normal_color '#ffffff'
+hc set frame_border_active_color '#000000ff'
+hc set frame_active_opacity 0
 hc set show_frame_decorations 'focused_if_multiple'
 hc set frame_bg_transparent on
-hc set frame_transparent_width 5
+hc set frame_transparent_width 2
 hc set frame_gap 30
 
 ## windows
@@ -220,6 +226,7 @@ hc set tabbed_max on
 ## shortcuts:
 #
 ### program shortcuts
+#
 #### fresh terminal: close & open xterm
 hc keybind $Mod-Control-c chain , close , spawn xterm
 #### dmenu: application launcher
@@ -269,7 +276,6 @@ astolfo() {
     spawn_with_rules alacritty -T 'htop'  -e htop
     RULES=( tag=home index=01  )
     spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
-    
 }
 soft1() {
     ~/.fehbg
@@ -280,10 +286,29 @@ soft1() {
     spawn_with_rules alacritty -T 'htop'  -e htop
     RULES=( tag=home index=11  )
     spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
-
+}
+soft2() {
+    ~/.fehbg
+    hc load home '(split horizontal:0.32:1 (split vertical:0.5:0 (clients vertical:0) (split vertical:0.52:0 (clients vertical:0) (clients vertical:0))) (clients vertical:0))'
+    RULES=( tag=home index=00 )
+    spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
+    RULES=( tag=home index=010 )
+    spawn_with_rules alacritty -T 'battery' -e battery
+    RULES=( tag=home index=011 )
+    spawn_with_rules alacritty -T 'htop'  -e htop
 }
 shinji() {
-    feh --bg-fill --no-fehbg '/home/bhavya/pictures/trash/rNWtdEv.jpeg' 
+    feh --bg-fill --no-fehbg '/home/bhavya/pictures/trash/rNWtdEv.jpeg'
+    hc load home '(split horizontal:0.78:0 (split horizontal:0.28:1 (clients vertical:0) (clients horizontal:0)) (split vertical:0.5:0 (clients vertical:0) (clients vertical:0)))'
+    RULES=( tag=home index=00  )
+    spawn_with_rules alacritty -T 'todo' -e nvim -c Goyo ./Documents/todo.md
+    RULES=( tag=home index=10 )
+    spawn_with_rules alacritty -T 'battery' -e battery
+    RULES=( tag=home index=11 )
+    spawn_with_rules alacritty -T 'htop'  -e htop
+}
+cybergirl() {
+    feh --bg-fill --no-fehbg '/home/bhavya/pictures/collections/theprimeagen-anime/cyber_girl.jpg'
     hc load home '(split horizontal:0.78:0 (split horizontal:0.28:1 (clients vertical:0) (clients horizontal:0)) (split vertical:0.5:0 (clients vertical:0) (clients vertical:0)))'
     RULES=( tag=home index=00  )
     spawn_with_rules alacritty -T 'todo' -e vim /home/bhavya/Documents/todo.md
