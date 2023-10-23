@@ -1,4 +1,4 @@
-#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/shinji"
+#include "/home/bhavya/dev/dotfiles/xorg/.xcolors/shinji2"
 
 *.foreground:	FOREGROUND
 *.background:	BACKGROUND
