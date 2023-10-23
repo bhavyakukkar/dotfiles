@@ -1,0 +1,11 @@
+#!/usr/bin/env /bin/bash
+
+# finds and prints path of random jpg/png/jpeg in your pictures directory
+# dependencies: tree
+
+PICS_DIR="/home/bhavya/pictures"
+
+NUM=$(tree $PICS_DIR -f | grep -e "/h.*\.jpg" -e "/h.*\.png" -e "/h.*\.jpeg" -o | wc -l)
+RAND=$(( $RANDOM % $NUM ))
+PHOTO=$(tree $PICS_DIR -f | grep -e "/h.*\.jpg" -e "/h.*\.png" -e "/h.*\.jpeg" -o | sed "${RAND}q;d")
+echo $PHOTO
