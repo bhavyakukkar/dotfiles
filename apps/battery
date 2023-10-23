@@ -76,8 +76,8 @@ def main():
         cs(0)
         scl()
         udc()
-        ip(1, GREEN, BLACK)
-        ip(2, RED, BLACK)
+        ip(1, GREEN, -1)
+        ip(2, RED, -1)
         draw(sc, None, None, CLEAR_SCREEN)
         while True:
             perc,charging = getPerc()
