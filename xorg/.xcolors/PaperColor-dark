@@ -2,20 +2,20 @@
 #define FOREGROUND #c6c6c6
 
 #define COLOR0 #1c1c1c
-#define COLOR8 #585858
 #define COLOR1 #af005f
-#define COLOR9 #ff5faf
 #define COLOR2 #5faf00
-#define COLOR10 #5faf5f
 #define COLOR3 #ffaf00
-#define COLOR11 #d7af5f
 #define COLOR4 #00afaf
-#define COLOR12 #5fafd7
 #define COLOR5 #d7af00
-#define COLOR13 #d7875f
 #define COLOR6 #808080
-#define COLOR14 #af87d7
 #define COLOR7 #5f8787
+#define COLOR8 #585858
+#define COLOR9 #ff5faf
+#define COLOR10 #5faf5f
+#define COLOR11 #d7af5f
+#define COLOR12 #5fafd7
+#define COLOR13 #d7875f
+#define COLOR14 #af87d7
 #define COLOR15 #d0d0d0
 
 #define COLOR16 #afd700
