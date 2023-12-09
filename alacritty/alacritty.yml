@@ -1,0 +1,24 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+import:
+  #- /home/bhavya/dev/dotfiles/alacritty/dracula.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/catppuccin/catppuccin-mocha.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/moonfly.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/minty-melon.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/shinji.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/papercolor-dark.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/nord.yaml
+  - /home/bhavya/dev/dotfiles/alacritty/gruvbox-material-alacritty.yml
+  #- /home/bhavya/dev/dotfiles/alacritty/selenized/selenized-dark.yml
+env:
+  TERM: alacritty
+window:
+  padding:
+    x: 4
+    y: 4
+font:
+  normal:
+    family: Fira Code
+    style: Regular
+  size: 6.0
+draw_bold_text_with_bright_colors: true
