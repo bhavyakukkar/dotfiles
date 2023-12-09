@@ -1,0 +1,4 @@
+#!/bin/sh
+# https://www.reddit.com/r/linux/comments/gvulgj/comment/fsr3ffd
+# https://www.reddit.com/user/JustPerfection2
+xwinwrap -fs -fdt -ni -b -nf -un -o 1.0 -debug -- mpv -wid WID --loop --no-audio "$1"

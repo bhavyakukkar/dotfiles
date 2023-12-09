@@ -3,7 +3,8 @@
 # finds and prints path of random jpg/png/jpeg in your pictures directory
 # dependencies: tree
 
-PICS_DIR="/home/bhavya/pictures"
+#PICS_DIR="/home/bhavya/pictures"
+PICS_DIR="$1"
 
 NUM=$(tree $PICS_DIR -f | grep -e "/h.*\.jpg" -e "/h.*\.png" -e "/h.*\.jpeg" -o | wc -l)
 RAND=$(( $RANDOM % $NUM ))

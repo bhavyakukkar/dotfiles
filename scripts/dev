@@ -1,0 +1,88 @@
+#!/bin/sh
+
+refcolor="torte"
+
+np() {
+    session="c"
+    pwd="/home/bhavya/uni/sem3/np/class"
+    ref="/usr/include"
+    editor="nvim"
+    color="lunaperche"
+
+    tmux new-session -d -s $session -c $pwd
+    window=1
+    tmux rename-window -t $session:$window 'vim'
+    tmux send-keys -t $session:$window "$editor -c 'colorscheme $color'" C-m
+    window=2
+    tmux new-window -t $session:$window -n 'build' -c $pwd
+    window=3
+    tmux new-window -t $session:$window -n 'ref' -c $pwd
+    tmux send-keys -t $session:$window "cd $ref; nvim -c 'colorscheme $refcolor'" C-m
+	tmux select-window -t $session:1
+    #herbstclient spawn st -e tmux attach-session -t $session
+}
+react() {
+    session="react"
+    pwd="/home/bhavya/uni/sem3/react/class/20231019/myapp2"
+    editor="nvim"
+    color="zephyr"
+
+    tmux new-session -d -s $session -c $pwd
+    window=1
+    tmux rename-window -t $session:$window 'code'
+    tmux send-keys -t $session:$window "$editor -c 'colorscheme $color'" C-m
+    window=2
+    tmux new-window -t $session:$window -n 'notes' -c $pwd
+    tmux send-keys -t $session:$window "emacs ../../notes.org" C-m G
+    window=3
+    tmux new-window -t $session:$window -n 'build' -c $pwd
+    tmux send-keys -t $session:$window "npm start"
+    window=4
+    tmux new-window -t $session:$window -n 'git' -c $pwd
+    tmux send-keys -t $session:$window "git status; printf '\n'; git log" C-m
+	tmux select-window -t $session:1
+    #herbstclient spawn st -e tmux attach-session -t $session
+}
+java() {
+    session="java"
+    pwd="/home/bhavya/uni/sem3/java"
+    ref="/lib/jvm/java-1.8-openjdk"
+    editor="nvim"
+    color="PaperColor|set background=dark"
+
+    tmux new-session -d -s $session -c $pwd
+    window=1
+    tmux rename-window -t $session:$window 'code'
+    tmux send-keys -t $session:$window "$editor -c 'colorscheme $color'" C-m
+    window=2
+    tmux new-window -t $session:$window -n 'build' -c $pwd
+    window=3
+    tmux new-window -t $session:$window -n 'notes' -c $pwd
+    tmux send-keys -t $session:$window "emacs ./Day"
+    window=4
+    tmux new-window -t $session:$window -n 'ref' -c $pwd
+    tmux send-keys -t $session:$window "cd $ref; nvim -c 'colorscheme $refcolor'" C-m
+	tmux select-window -t $session:1
+    #herbstclient spawn st -e tmux attach-session -t $session
+}
+rust() {
+    session="rust"
+    pwd="/home/bhavya/dev/rust/sketch/sketch"
+    ref="/usr/lib/rustlib"
+    editor="nvim"
+    color="gruvbox|set background=dark"
+
+    tmux new-session -d -s $session -c $pwd
+    window=1
+    tmux rename-window -t $session:$window 'code'
+    tmux send-keys -t $session:$window "$editor -c 'colorscheme $color'" C-m
+    window=2
+    tmux new-window -t $session:$window -n 'build' -c $pwd
+    window=3
+    tmux new-window -t $session:$window -n 'ref' -c $pwd
+    tmux send-keys -t $session:$window "cd $ref; nvim -c 'colorscheme $refcolor'" C-m
+	tmux select-window -t $session:1
+    #herbstclient spawn st -e tmux attach-session -t $session
+}
+
+$1

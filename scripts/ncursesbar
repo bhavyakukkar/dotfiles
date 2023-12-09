@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+import curses as c
+from os import popen as p
+from time import sleep as sl
+
+try:
+    s = c.initscr()
+    c.curs_set(0)
+    while True:
+        s.addstr(0,0,' '*(s.getmaxyx()[1] - 1))
+        s.addstr(0,0,p("wmctrl -d | grep -e '*' | grep -o -e ' [a-zA-Z0-9]*$'").read()[1:(s.getmaxyx()[1])])
+        s.refresh()
+        sl(0.1)
+except:
+    pass
+finally:
+    c.endwin()
