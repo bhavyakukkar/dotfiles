@@ -3,7 +3,7 @@
 #
 
 # terminal emulator
-super + Return
+super + shift + Return
 	alacritty
 
 # program launcher
@@ -26,9 +26,13 @@ super + alt + q
 super + alt + r
 	bspc wm -r
 
-# close and kill
-super + {_,shift + }q
-	bspc node -{c,k}
+# close
+super + shift + c
+	bspc node -c
+
+# kill
+super + shift + q
+    bspc node -k
 
 # alternate between the tiled and monocle layout
 super + m
