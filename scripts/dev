@@ -23,7 +23,7 @@ np() {
 }
 react() {
     session="react"
-    pwd="/home/bhavya/uni/sem3/react/class/20231019/myapp2"
+    pwd="/home/bhavya/uni/sem3/react/lab/reactnative/my-app"
     editor="nvim"
     color="zephyr"
 
