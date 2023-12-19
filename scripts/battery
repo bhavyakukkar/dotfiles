@@ -1,28 +1,32 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
+# todo: refresh when sc.maxyx changed
 # dependencies: acpi, figlet (not pyfiglet)
 
-from re import search as se
+from re import findall as fa, search as se
 from os import popen as popen
-from curses import initscr as it, endwin as ew, curs_set as cs, start_color as scl, use_default_colors as udc, init_pair as ip, color_pair as cp, COLOR_GREEN as GREEN, COLOR_RED as RED, COLOR_BLACK as BLACK, A_BOLD as BOLD
+from curses import initscr as it, endwin as ew, curs_set as cs, start_color as scl, use_default_colors as udc, init_pair as ip, color_pair as cp, COLOR_GREEN as GREEN, COLOR_RED as RED, COLOR_BLACK as BLACK, COLOR_WHITE as WHITE, A_BOLD as BOLD
 from random import randint as ri
 from time import sleep as sl
 
 
-CLEAR_SCREEN = 1
-DRAW_ONCE = 2
-CLEAR_ONCE = 3
+DRAW_ONCE = 1
+CLEAR_ONCE = 2
 po = lambda s: popen(s).read()
 
 includePercSymbol = True
 frameDuration = 1
-fonts = "alligator alphabet avatar banner3-D basic bell big bulbhead colossal contrast cosmic doom fuzzy graceful graffiti morse poison rectangles relief2 rev sblood tanja ticks".split(" ")
+#fonts = "alligator alphabet avatar banner3-D basic bell big bulbhead colossal contrast cosmic doom fuzzy graceful graffiti morse poison rectangles relief2 rev sblood tanja ticks".split(" ")
+fonts = ["basic"]
 
 def getPerc():
     s = po('acpi')
-    r = se('1?[0-9]?[0-9]%', s)
+    r = fa('1?[0-9]?[0-9]%', s)
     charging = True if se(' [Cc]harging', s) else False
-    return s[r.regs[0][0]:(r.regs[0][1]-(1 if not includePercSymbol else 0))], charging
+    if len(r) == 1:
+        return int(r[0][:-1]), charging
+    else:
+        return max([int(p[:-1]) for p in r]), charging
 
 def figlet(perc):
     return po(f"figlet -f {fonts[ri(0, len(fonts)-1)]} {perc}").split('\n')
@@ -42,21 +46,10 @@ def clean(para):
     #raise Exception([para, newPara])
     return newPara
 
-lasth = 0; lastw = 0
-def draw(sc, para, charging, mode):
-    global lasth, lastw
+def draw(sc, para, col, mode):
     i = 0
     h, w = sc.getmaxyx()
     lnn = 0
-    if mode == CLEAR_SCREEN or lasth != h or lastw != w:
-        for y in range(h):
-            try:
-                sc.addstr(y, 0, ' '*w, cp(1))
-            except:
-                pass
-        lasth = h; lastw = w
-        return
-    lasth = h; lastw = w
     for ln in para:
         y = (h - len(para))//2 + lnn
         chn = 0
@@ -64,7 +57,7 @@ def draw(sc, para, charging, mode):
             x = (w - len(para[0]))//2 + chn
             if y >= 0 and y < h and x >= 0 and x < w:
                 try:
-                    sc.addch(y, x, ch if mode == DRAW_ONCE else ' ', cp(1 if charging else 2) | BOLD)
+                    sc.addch(y, x, ch if mode == DRAW_ONCE else ' ', cp(col) | BOLD)
                 except:
                     pass
             chn += 1
@@ -78,14 +71,24 @@ def main():
         udc()
         ip(1, GREEN, -1)
         ip(2, RED, -1)
-        draw(sc, None, None, CLEAR_SCREEN)
+        ip(3, WHITE, -1)
+        sc.clear()
+        perc, charging, h, w = -1, -1, -1, -1
         while True:
-            perc,charging = getPerc()
-            ds = clean(figlet(perc))
-            draw(sc, ds, charging, DRAW_ONCE)
-            sc.refresh()
+            prevPerc, prevCharging = perc, charging
+            perc, charging = getPerc()
+            prevH, prevW = h, w
+            h, w = sc.getmaxyx()
+            #raise Exception(perc)
+            if (prevPerc != perc or prevCharging != charging) or (prevH != h or prevW != w):
+                #draw(sc, ds, charging, CLEAR_ONCE)
+                sc.clear()
+                ds = clean(figlet(f"{perc}%"))
+                color = 1 if charging else (2 if perc <= 30 else 3)
+                draw(sc, ds, color, DRAW_ONCE)
+                sc.refresh()
+            #prevH = sc.getmaxyx()[0]; prevW = sc.getmaxyx()[1]
             sl(frameDuration)
-            draw(sc, ds, charging, CLEAR_ONCE)
             sc.refresh()
     except KeyboardInterrupt:
         pass
