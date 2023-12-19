@@ -1,0 +1,24 @@
+! ported from moonfly.yml for alacritty
+
+#define BACKGROUND #080808
+#define FOREGROUND #bdbdbd
+
+#define COLOR0  #323437
+#define COLOR1  #ff5454
+#define COLOR2  #8cc85f
+#define COLOR3  #e3c78a
+#define COLOR4  #80a0ff
+#define COLOR5  #cf87e8
+#define COLOR6  #79dac8
+#define COLOR7  #c6c6c6
+!#define COLOR8  #949494
+#define COLOR8  #323437
+#define COLOR9  #ff5189
+#define COLOR10 #36c692
+#define COLOR11 #c2c292
+!#define COLOR12 #74b2ff
+#define COLOR12 #ae81ff
+!#define COLOR13 #ae81ff
+#define COLOR13 #74b2ff
+#define COLOR14 #85dc85
+#define COLOR15 #e4e4e4
