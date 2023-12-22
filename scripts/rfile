@@ -1,0 +1,11 @@
+#!/usr/bin/env /bin/bash
+
+# finds and prints path of random file ending in ".<argument 2>" in directory <argument 1>
+# dependencies: tree(1)
+
+DIR="$1"
+
+NUM=$(tree $DIR -f | grep -e "/.*\.$2" -o | wc -l)
+RAND=$(( $(( $RANDOM % $NUM )) + 1 ))
+PHOTO=$(tree $DIR -f | grep -e "/.*\.$2" -o | sed "${RAND}q;d")
+echo $PHOTO

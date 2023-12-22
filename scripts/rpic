@@ -6,7 +6,7 @@
 #PICS_DIR="/home/bhavya/pictures"
 PICS_DIR="$1"
 
-NUM=$(tree $PICS_DIR -f | grep -e "/h.*\.jpg" -e "/h.*\.png" -e "/h.*\.jpeg" -o | wc -l)
-RAND=$(( $RANDOM % $NUM ))
-PHOTO=$(tree $PICS_DIR -f | grep -e "/h.*\.jpg" -e "/h.*\.png" -e "/h.*\.jpeg" -o | sed "${RAND}q;d")
+NUM=$(tree $PICS_DIR -f | grep -e "/.*\.\(jpg\|png\|jpeg\)" -o | wc -l)
+RAND=$(( $(( $RANDOM % $NUM )) + 1 ))
+PHOTO=$(tree $PICS_DIR -f | grep -e "/.*\.\(jpg\|png\|jpeg\)" -o | sed "${RAND}q;d")
 echo $PHOTO
