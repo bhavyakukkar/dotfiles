@@ -72,6 +72,9 @@ def main():
         ip(1, GREEN, -1)
         ip(2, RED, -1)
         ip(3, WHITE, -1)
+        ip(4, 2, -1)
+        ip(5, 1, -1)
+        ip(6, 15, -1)
         sc.clear()
         perc, charging, h, w = -1, -1, -1, -1
         while True:
@@ -81,10 +84,12 @@ def main():
             h, w = sc.getmaxyx()
             #raise Exception(perc)
             if (prevPerc != perc or prevCharging != charging) or (prevH != h or prevW != w):
+                if prevPerc == 31:
+                    po('dunstify "Battery Low"')
                 #draw(sc, ds, charging, CLEAR_ONCE)
                 sc.clear()
                 ds = clean(figlet(f"{perc}%"))
-                color = 1 if charging else (2 if perc <= 30 else 3)
+                color = 4 if charging else (5 if perc <= 30 else 6)
                 draw(sc, ds, color, DRAW_ONCE)
                 sc.refresh()
             #prevH = sc.getmaxyx()[0]; prevW = sc.getmaxyx()[1]
