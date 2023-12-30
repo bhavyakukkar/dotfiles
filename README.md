@@ -28,4 +28,4 @@
 - **Neovim Colorscheme:** [base16-chalk](https://base16.netlify.app/previews/base16-chalk)
 - **Doom Emacs Theme:** spacegrey
 - **GTK Theme:** Dracula
-- **Firefox Extensions:** [Return Youtube Dislike](https://www.returnyoutubedislike.com), Web Scrobbler (https://web-scrobbler.com/), Zen Fox (https://github.com/sufone/zenfox)
+- **Firefox Extensions:** [Return Youtube Dislike](https://www.returnyoutubedislike.com), [Web Scrobbler](https://web-scrobbler.com/), [Zen Fox](https://github.com/sufone/zenfox)
