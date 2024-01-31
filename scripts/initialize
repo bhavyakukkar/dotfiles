@@ -1,7 +1,31 @@
-#!/bin/sh
-xinput set-prop 'ELAN1300:00 04F3:3057 Touchpad' 'libinput Tapping Enabled' 1
-pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo 10%
-./.fehbg
-($TERMINAL -e peaclock) &
-($TERMINAL -e battery) &
-nvim -c 'set norelativenumber|set colorcolumn=0|split /home/bhavya/Documents/todo.md' /home/bhavya/Documents/apps.md
+#!/bin/bash
+# set tapping on
+[[ "$XDG_SESSION_TYPE" == "wayland" ]] && (
+    :
+) || (
+    xinput set-prop 'ELAN1300:00 04F3:3057 Touchpad' 'libinput Tapping Enabled' 1
+)
+
+# set volume to 10%
+pactl set-sink-volume @DEFAULT_SINK@ 10%
+
+# set wallpaper
+[[ "$XDG_SESSION_TYPE" == "wayland" ]] && (
+    (swaybg -m stretch -i /home/bhavya/pictures/collections/kitsunebishi-Wallpapers/images/00034.png >> /dev/null) &
+) || (
+    ~/.fehbg
+)
+
+# term containing battery
+[[ "$XDG_SESSION_TYPE" == "wayland" ]] && (
+    (foot sh -c battery) &
+) || (
+    (alacritty -e battery) &
+)
+
+# term containing notes
+#(alacritty -e nvim -c 'set norelativenumber|set colorcolumn=0|split /home/bhavya/Documents/apps.md' /home/bhavya/Documents/todo.md) &
+#(foot sh -c "nvim -c 'set norelativenumber|set colorcolumn=0|split /home/bhavya/Documents/apps.md' /home/bhavya/Documents/todo.md") &
+
+# clock in this term
+peaclock
