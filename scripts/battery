@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # todo: refresh when sc.maxyx changed
-# dependencies: acpi, figlet (not pyfiglet)
+# dependencies: acpi, figlet (not pyfiglet) & a notification daemon
 
 from re import findall as fa, search as se
 from os import popen as popen
@@ -84,12 +84,12 @@ def main():
             h, w = sc.getmaxyx()
             #raise Exception(perc)
             if (prevPerc != perc or prevCharging != charging) or (prevH != h or prevW != w):
-                if prevPerc == 31:
-                    po('dunstify "Battery Low"')
+                if prevPerc == 36 and perc < prevPerc:
+                    po('notify-send -w "Battery Low"')
                 #draw(sc, ds, charging, CLEAR_ONCE)
                 sc.clear()
                 ds = clean(figlet(f"{perc}%"))
-                color = 4 if charging else (5 if perc <= 30 else 6)
+                color = 4 if charging else (5 if perc <= 35 else 6)
                 draw(sc, ds, color, DRAW_ONCE)
                 sc.refresh()
             #prevH = sc.getmaxyx()[0]; prevW = sc.getmaxyx()[1]
