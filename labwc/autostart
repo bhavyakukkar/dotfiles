@@ -1,0 +1,4 @@
+dunst >/dev/null 2>&1 &
+conky >/dev/null 2>&1 &
+swaybg -i "/home/bhavya/pictures/collections/aesthetic-wallpapers/images/dark_skulls.png" >/dev/null 2>&1 &
+sfwbar >/dev/null 2>&1 &

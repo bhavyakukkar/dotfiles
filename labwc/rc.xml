@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<labwc_config>
+  <core>
+    <decoration>server</decoration>
+    <gap>0</gap>
+    <adaptiveSync>no</adaptiveSync>
+    <reuseOutputMode>yes</reuseOutputMode>
+    <allowTearing>yes</allowTearing>
+  </core>
+  <theme>
+    <name>Custom</name>
+    <cornerRadius>3</cornerRadius>
+    <font place="ActiveWindow" name="Inter Medium" size="10"/>
+    <font place="InactiveWindow" name="Inter Medium" size="10"/>
+    <font place="MenuItem" name="Inter Regular" size="9"/>
+    <font place="OnScreenDisplay" name="Inter Regular" size="9"/>
+  </theme>
+  <windowSwitcher>
+    <show>yes</show>
+    <preview>yes</preview>
+    <outlines>no</outlines>
+    <fields>
+      <field content="type" width="15%"/>
+      <field content="trimmed_identifier" width="20%"/>
+      <field content="title" width="65%"/>
+    </fields>
+  </windowSwitcher>
+  <desktops>
+    <popupTime>1000</popupTime>
+    <number>4</number>
+  </desktops>
+  <placement>
+    <policy>center</policy>
+  </placement>
+  <focus>
+    <followMouse>no</followMouse>
+    <followMouseRequiresMovement>no</followMouseRequiresMovement>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+  <windowRules>
+    <!-- Global rules -->
+    <!-- <windowRule identifier="*" serverDecoration="yes" /> -->
+    <!-- Application specific rules -->
+    <windowRule identifier="firefox" title="Picture-in-Picture">
+      <action name="ToggleAlwaysOnTop"/>
+      <action name="Maximize"/>
+    </windowRule>
+    <!--<windowRule identifier="foot">-->
+    <!--  <action name="ToggleDecorations"/>-->
+    <!--</windowRule>-->
+    <windowRule identifier="discord">
+      <action name="ToggleDecorations"/>
+      <action name="Maximize"/>
+    </windowRule>
+    <windowRule identifier="calibre-gui" matchOnce="true">
+      <action name="Maximize"/>
+      <action name="SendToDesktop" to="3" follow="no"/>
+      <action name="Unfocus"/>
+    </windowRule>
+    <windowRule identifier="mpv">
+      <action name="ToggleDecorations"/>
+      <action name="ToggleDecorations"/>
+      <!-- <action name="Maximize" /> -->
+    </windowRule>
+    <windowRule identifier="Spotify">
+      <action name="ToggleDecorations"/>
+      <action name="Maximize"/>
+    </windowRule>
+    <windowRule identifier="PokeMMO">
+      <action name="ToggleDecorations"/>
+      <action name="Maximize"/>
+    </windowRule>
+  </windowRules>
+  <regions>
+    <region name="left" x="0%" y="0%" height="100%" width="67%"/>
+    <region name="right" x="33%" y="0%" height="100%" width="67%"/>
+    <region name="top-left" x="0%" y="0%" height="50%" width="50%"/>
+    <region name="top-right" x="50%" y="0%" height="50%" width="50%"/>
+    <region name="bottom-left" x="0%" y="50%" height="50%" width="50%"/>
+    <region name="bottom-right" x="50%" y="50%" height="50%" width="50%"/>
+    <region name="vertical-one" x="0%" y="0%" height="100%" width="33%"/>
+    <region name="vertical-two" x="33%" y="0%" height="100%" width="34%"/>
+    <region name="vertical-three" x="67%" y="0%" height="100%" width="33%"/>
+    <region name="horizontal-one" x="0%" y="0%" height="33%" width="100%"/>
+    <region name="horizontal-two" x="0%" y="33%" height="34%" width="100%"/>
+    <region name="horizontal-three" x="0%" y="67%" height="33%" width="100%"/>
+  </regions>
+  <keyboard>
+    <default/>
+    <keybind key="W-F9">
+      <action name="ToggleTearing"/>
+    </keybind>
+    <!-- Clear keybinds -->
+    <keybind key="A-Left"/>
+    <keybind key="A-Right"/>
+    <keybind key="A-Up"/>
+    <keybind key="A-Down"/>
+    <!-- <keybind key="A-Tab" /> -->
+    <!-- Override default keybinds -->
+    <keybind key="W-Up">
+      <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="Iconify"/>
+    </keybind>
+    <!-- Custom keybinds -->
+    <keybind key="W-S-Return">
+      <action name="Execute" command="foot"/>
+    </keybind>
+    <keybind key="W-Space">
+      <action name="Execute" command="bemenu-run"/>
+    </keybind>
+    <keybind key="W-d">
+      <action name="Execute" command="anyrun"/>
+    </keybind>
+    <keybind key="W-F11">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-S-c">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="W-S-q">
+      <action name="Exit"/>
+    </keybind>
+    <!-- Save screenshot -->
+    <keybind key="Print">
+      <action name="Execute">
+        <command>sh -c 'grim "$(xdg-user-dir PICTURES)"/Screenshots/"$(date +%Y-%m-%dT%H:%M:%S)".png'</command>
+      </action>
+    </keybind>
+    <!-- Save area screenshot -->
+    <keybind key="S-Print">
+      <action name="Execute">
+        <command>sh -c 'grim -g $(slurp -d) "$(xdg-user-dir PICTURES)"/Screenshots/"$(date +%Y-%m-%dT%H:%M:%S)".png'</command>
+      </action>
+    </keybind>
+    <!-- Copy area screenshot to clipboard -->
+    <keybind key="C-S-Print">
+      <action name="Execute">
+        <command>sh -c 'grim -g "$(slurp -d)" - | wl-copy -t image/png'</command>
+      </action>
+    </keybind>
+    <!-- Toggle compositor keybinds for specific window -->
+    <keybind key="Scroll_Lock">
+      <action name="ToggleKeybinds"/>
+    </keybind>
+    <!-- Volume control -->
+    <keybind key="W-Prior">
+      <action name="Execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"/>
+    </keybind>
+    <keybind key="W-Next">
+      <action name="Execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"/>
+    </keybind>
+    <!-- Mute sound -->
+    <keybind key="Pause">
+      <action name="Execute" command="wpctl set-mute @DEFAULT_SINK@ toggle"/>
+    </keybind>
+    <!-- Workspaces -->
+    <keybind key="W-Tab">
+      <action name="GoToDesktop" to="last"/>
+    </keybind>
+    <keybind key="W-C-Left">
+      <action name="GoToDesktop" to="left"/>
+    </keybind>
+    <keybind key="W-C-Right">
+      <action name="GoToDesktop" to="right"/>
+    </keybind>
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1"/>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2"/>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3"/>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4"/>
+    </keybind>
+    <keybind key="W-S-Left">
+      <action name="SendToDesktop" to="left"/>
+    </keybind>
+    <keybind key="W-S-Right">
+      <action name="SendToDesktop" to="right"/>
+    </keybind>
+    <keybind key="W-S-1">
+      <action name="SendToDesktop" to="1"/>
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop" to="2"/>
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop" to="3"/>
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4"/>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <default/>
+    <context name="Frame">
+      <mousebind button="W-Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="W-Left" action="Drag">
+        <action name="Move"/>
+      </mousebind>
+      <mousebind button="W-Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="W-Right" action="Drag">
+        <action name="Resize"/>
+      </mousebind>
+      <mousebind button="W-Left" action="Click">
+        <action name="ShowMenu" menu="root-menu"/>
+      </mousebind>
+      <mousebind button="W-Right" action="Click">
+        <action name="ShowMenu" menu="client-menu"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Drag"/>
+      <mousebind button="A-Right" action="Drag"/>
+    </context>
+  </mouse>
+  <libinput>
+    <device category="default">
+      <naturalScroll>no</naturalScroll>
+      <pointerSpeed>0</pointerSpeed>
+      <accelProfile>flat</accelProfile>
+    </device>
+  </libinput>
+</labwc_config>
