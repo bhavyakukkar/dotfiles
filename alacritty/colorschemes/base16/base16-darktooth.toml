@@ -1,51 +1,51 @@
 [[colors.indexed_colors]]
-color = "0xfe8625"
+color = "#fe8625"
 index = 16
 
 [[colors.indexed_colors]]
-color = "0xa87322"
+color = "#a87322"
 index = 17
 
 [[colors.indexed_colors]]
-color = "0x32302f"
+color = "#32302f"
 index = 18
 
 [[colors.indexed_colors]]
-color = "0x504945"
+color = "#504945"
 index = 19
 
 [[colors.indexed_colors]]
-color = "0x928374"
+color = "#928374"
 index = 20
 
 [[colors.indexed_colors]]
-color = "0xd5c4a1"
+color = "#d5c4a1"
 index = 21
 
 [colors.bright]
-black = "0x665c54"
-blue = "0x0d6678"
-cyan = "0x8ba59b"
-green = "0x95c085"
-magenta = "0x8f4673"
-red = "0xfb543f"
-white = "0xfdf4c1"
-yellow = "0xfac03b"
+black = "#665c54"
+blue = "#0d6678"
+cyan = "#8ba59b"
+green = "#95c085"
+magenta = "#8f4673"
+red = "#fb543f"
+white = "#fdf4c1"
+yellow = "#fac03b"
 
 [colors.cursor]
-cursor = "0xa89984"
-text = "0x1d2021"
+cursor = "#a89984"
+text = "#1d2021"
 
 [colors.normal]
-black = "0x1d2021"
-blue = "0x0d6678"
-cyan = "0x8ba59b"
-green = "0x95c085"
-magenta = "0x8f4673"
-red = "0xfb543f"
-white = "0xa89984"
-yellow = "0xfac03b"
+black = "#1d2021"
+blue = "#0d6678"
+cyan = "#8ba59b"
+green = "#95c085"
+magenta = "#8f4673"
+red = "#fb543f"
+white = "#a89984"
+yellow = "#fac03b"
 
 [colors.primary]
-background = "0x1d2021"
-foreground = "0xa89984"
+background = "#1d2021"
+foreground = "#a89984"
