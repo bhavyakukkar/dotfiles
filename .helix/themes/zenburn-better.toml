@@ -1,0 +1,25 @@
+# inherits https://github.com/helix-editor/helix/blob/25.01/runtime/themes/zenburn.toml
+inherits = "zenburn"
+
+# overrides
+"ui.linenr" = { fg = "#9fafaf", bg = "#202020" }
+"ui.selection.primary" = { bg = "#232323" }
+"ui.statusline.inactive" = { bg = "line-bg", fg = 'line-fg' }
+"ui.statusline" = { bg = "line-active-bg", fg = "line-active-fg", modifiers = ["bold"] }
+"keyword" = { fg = "#f0dfaf"}
+
+# additions
+"ui.bufferline" = { bg = "line-bg", fg = "line-fg" }
+"ui.bufferline.active" = { bg = "line-active-bg", fg = "line-active-fg", modifiers = ["bold"] }
+"info" = { fg = "constant" }
+
+[palette]
+# overrides
+bg = "#323232"
+statusbg = "#273229"
+
+# additions
+line-bg = "#273229" # same as statusbg currently
+line-fg = "#ccdc90"
+line-active-bg = "#88b090"
+line-active-fg = "#2c2e2e" # same as uibg currently

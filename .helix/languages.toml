@@ -1,0 +1,25 @@
+# default value assumed to be https://github.com/helix-editor/helix/blob/24.07/languages.toml#L150C1-L156C55
+[language-server.rust-analyzer.config]
+numThreads = 6
+
+[language-server.typescript-language-server]
+config = { format = { semicolons = "insert" } }
+
+[[language]]
+name = "typescript"
+auto-format = true
+
+[[language]]
+name = "javascript"
+auto-format = true
+
+[[language]]
+name = "jsx"
+auto-format = true
+
+[[language]]
+name = "tsx"
+auto-format = true
+
+[language-server.solc]
+command = "cat"

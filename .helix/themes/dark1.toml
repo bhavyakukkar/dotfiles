@@ -1,0 +1,12 @@
+inherits = "zenburn"
+[palette]
+comment = "#6d7ea8"
+# bg = "#4b8375"
+uibg = "#7b5303"
+constant = "#0f2e07"
+normal = "#f88f5d"
+todo = "#0c3439"
+errorfg = "#79029d"
+errorbg = "#331dac"
+statusbg = "#1aed94"
+numeric = "#36cb1f"

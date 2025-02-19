@@ -1,0 +1,24 @@
+inherits = "base16-darktooth"
+
+"keyword.control.conditional" = { fg = "base0E1" }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"type" = { fg = "base0A", modifiers = ["underlined"] }
+
+[palette]
+base00  = "#16191a" # Default Background
+base01  = "#32302f" # Lighter Background (Used for status bars, line number and folding marks)
+base02  = "#504945" # Selection Background
+base03  = "#665c54" # Comments, Invisibles, Line Highlighting
+base04  = "#928374" # Dark Foreground (Used for status bars)
+base05  = "#a89984" # Default Foreground, Caret, Delimiters, Operators
+base06  = "#d5c4a1" # Light Foreground (Not often used)
+base07  = "#fdf4c1" # Light Background (Not often used)
+base08  = "#fb543f" # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+base09  = "#fe8625" # Integers, Boolean, Constants, XML Attributes, Markup Link Url
+base0A  = "#fac03b" # Classes, Markup Bold, Search Text Background
+base0B  = "#95c085" # Strings, Inherited Class, Markup Code, Diff Inserted
+base0C  = "#8ba59b" # Support, Regular Expressions, Escape Characters, Markup Quotes
+base0D  = "#2d7688" # Functions, Methods, Attribute IDs, Headings
+base0E  = "#bf76a3" # Keywords, Storage, Selector, Markup Italic, Diff Changed
+base0E1 = "#9f5683" # Keywords, Storage, Selector, Markup Italic, Diff Changed
+base0F  = "#a87322" # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>

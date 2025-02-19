@@ -1,0 +1,6 @@
+inherits = "base16-material-darker"
+
+"keyword.control.conditional" = { fg = "base0E1" }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"type" = { fg = "base0A", modifiers = ["bold"] }
+"ui.background" = {}

@@ -1,0 +1,40 @@
+theme = "amberwood_better"
+
+[editor]
+#auto-completion = false
+rulers = [101]
+bufferline = "multiple"
+scrolloff = 1
+
+[editor.file-picker]
+git-ignore = false
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+C-e = "scroll_down"
+C-y = "scroll_up"
+
+A-h = "jump_view_left"
+A-j = "jump_view_down"
+A-k = "jump_view_up"
+A-l = "jump_view_right"
+
+W = 'move_next_sub_word_start'
+B = 'move_prev_sub_word_start'
+E = 'move_next_sub_word_end'
+
+C-l = "goto_next_buffer"
+C-h = "goto_previous_buffer"
+
+C-S-w = ":buffer-close"
+C-S-A-w = ":buffer-close!"
+
+[keys.select]
+W = 'extend_next_sub_word_start'
+B = 'extend_prev_sub_word_start'
+E = 'extend_next_sub_word_end'
+
+[keys.normal."space"]
+E = "file_picker_in_current_buffer_directory"

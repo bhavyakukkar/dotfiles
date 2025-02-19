@@ -1,0 +1,6 @@
+inherits = "solarized_dark"
+
+"diagnostic.warning" = { underline = { style = "curl", color = "yellow" } }
+"warning" =  { fg = "yellow", modifiers= ["bold", "underlined"] }
+# base015
+"ui.statusline" = { fg = "base2", bg = "base015" }
