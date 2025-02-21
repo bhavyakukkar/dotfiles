@@ -1,0 +1,58 @@
+clear_all_shortcuts yes
+
+# startup script
+# map alt+ctrl+shift+t combine : new_window_with_cwd : send_key c : send_key l : send_key e : send_key a : send_key r : send_key space : send_key & : send_key & : send_key space : send_key c : send_key o : send_key l : send_key o : send_key r : send_key s : send_key c : send_key r : send_key i : send_key p : send_key t : send_key space : send_key - : send_key e : send_key space : send_key t : send_key i : send_key e : send_key f : send_key i : send_key g : send_key h : send_key t : send_key e : send_key r : send_key 1 : send_key - : send_key n : send_key o : send_key - : send_key i : send_key n : send_key v : send_key o : send_key enter
+# map alt+ctrl+shift+t combine : new_window_with_cwd : remote_control_script clear && colorscript -e tiefighter1-no-invo
+
+# reload
+map ctrl+shift+f5 load_config_file
+
+# font
+# font_family IosevkaNerdFontMono
+font_size 12
+#font_family Fira Code
+#font_size 10
+
+# font-size
+map ctrl+equal change_font_size all +1.0
+map ctrl+minus change_font_size all -1.0
+
+# tabs
+map alt+t new_tab_with_cwd
+map alt+tab next_tab
+map shift+alt+tab previous_tab
+map alt+shift+r set_tab_title
+
+# layouts
+enabled_layouts tall,stack
+toggle_layout fat
+map alt+shift+t new_window_with_cwd
+map alt+w next_window
+map alt+shift+w prev_window
+map alt+shift+enter next_layout
+
+# clipboard
+map ctrl+shift+c copy_to_clipboard
+map ctrl+shift+v paste_from_clipboard
+
+# misc
+window_padding_width 6
+enable_audio_bell no
+bell_path ~/music/fx/RZFWLXE-bell-hop-bell.wav
+allow_hyperlinks no
+
+# opacity
+# background_opacity 0.98
+
+# BEGIN_KITTY_THEME
+# OneDark-Pro
+include current-theme.conf
+# END_KITTY_THEME
+
+
+# BEGIN_KITTY_FONTS
+font_family      family='Iosevka Nerd Font Mono' style=Oblique
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
