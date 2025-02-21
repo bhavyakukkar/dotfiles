@@ -21,6 +21,7 @@ export EDITOR="vim"
 #PS1='\W $ '
 #PS1='
 #\e[32;107;7m\] \u \[\e[0m\]\e[35;107;1;7m\] \w \[\e[0m\]\e[36;107;7m\] \@ \[\e[0m\]\n$ '
+# PS1='[\u@\h \W]\$ '
 
 # fetches
 #printf "\n" && uwufetch -d gentoo
@@ -36,3 +37,9 @@ source ~/programs/scripts/shell-mommy.sh; export PROMPT_COMMAND="mommy \\$\\(exi
 
 # starship
 eval "$(starship init bash)"
+
+# cargo/rust
+. "$HOME/.cargo/env"
+
+# nvm
+source /usr/share/nvm/init-nvm.sh

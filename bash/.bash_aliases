@@ -4,10 +4,11 @@
 alias ls='ls --color=auto'
 alias lt='ls --human-readable --size -1 -S --classify'
 alias count='find . -type f | wc -l'
-alias hgrep='history | grep --color=auto'
 alias sudo='sudo '
+
+# grep aliases
 alias g='grep --color=auto'
-alias die='exit'
+alias gr='grep --exclude-dir=.git/ --exclude-dir=target/ -rn '
 
 # specific aliases
 alias jupyter='cd ~; python -m notebook'
