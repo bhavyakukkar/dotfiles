@@ -1,0 +1,26 @@
+[package]
+name = "battery"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4.37"
+crossterm = "0.27.0"
+regex = "1.10.2"
+
+[lib]
+name = "battery"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[[bin]]
+name = "sway"
+path = "src/sway.rs"
+
+[[bin]]
+name = "i3"
+path = "src/i3.rs"
