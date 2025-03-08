@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if herbstclient silent get_attr my_polybar_is_hidden ; then
-	polybar-msg cmd hide
+	polybar-msg cmd show &
 	herbstclient remove_attr my_polybar_is_hidden
 else
-	polybar-msg cmd show
+	polybar-msg cmd hide &
 	herbstclient new_attr bool my_polybar_is_hidden
 fi

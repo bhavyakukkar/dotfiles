@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if herbstclient silent get_attr my_polybar_is_maximal ; then
+    pkill polybar && herbstclient spawn polybar -c /home/bhavya/.config/polybar/config-minimal.ini
+	herbstclient remove_attr my_polybar_is_maximal
+else
+    pkill polybar && herbstclient spawn polybar
+	herbstclient new_attr bool my_polybar_is_maximal
+fi
