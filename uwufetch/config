@@ -1,0 +1,15 @@
+#distro=gentoo
+#image=~/Pictures/picture.png
+user=false
+os=true
+host=true
+kernel=true
+cpu=false
+gpu=1 # disables the gpu[1] (array goes from 0 to 255)
+gpus=false # enables all gpus (except 1 that got disabled before)
+ram=true
+resolution=false
+shell=true
+pkgs=true
+uptime=true
+colors=true
