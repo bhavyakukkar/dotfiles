@@ -1,0 +1,54 @@
+#format = '''$git_branch$git_status$directory$character'''
+#format = '''$directory$git_branch$character'''
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$hg_branch\
+$pijul_channel\
+$package\
+$c\
+$fennel\
+$gleam\
+$golang\
+$haskell\
+$java\
+$lua\
+$nodejs\
+$ocaml\
+$php\
+$python\
+$rust\
+$zig\
+$spack\
+$memory_usage\
+$direnv\
+$env_var\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+add_newline = false
+
+#[directory]
+#format = '''
+#[$path]($style)[$read_only]($read_only_style) '''
+#
+#[git_branch]
+#format = '''[$symbol$branch(:$remote_branch)]($style) '''
