@@ -133,7 +133,15 @@ super + ctrl + b
 	/usr/local/bin/togglepolybar
 
 super + ctrl + n
-    alacritty -e nmtui-connect
+	alacritty -e nmtui-connect
 
 super + ctrl + shift + {9,0}
-    pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo {-10%,+10%}
+	pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo {-10%,+10%}
+
+{XF86AudioRaiseVolume,XF86AudioLowerVolume}
+	pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo {-10%,+10%}
+XF86AudioMute
+	pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle
+
+super + ctrl + shift + 1
+	alacritty -e cmatrix
