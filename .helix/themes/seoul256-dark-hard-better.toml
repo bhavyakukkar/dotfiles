@@ -1,0 +1,7 @@
+inherits = "seoul256-dark-hard"
+
+"ui.bufferline" = { fg = "gray9" }
+"ui.bufferline.active" = { bg = "gray", fg = "gray13", modifiers = ["bold"] }
+
+"ui.statusline.inactive" = { fg = "gray9" }
+"ui.statusline" = { fg = "gray13", modifiers = ["bold"] }
