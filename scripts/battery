@@ -20,7 +20,8 @@ frameDuration = 1
 fonts = ["basic"]
 
 def getPerc():
-    s = po('acpi')
+    # s = po('acpi')
+    s = po('upower -d | grep percentage')
     r = fa('1?[0-9]?[0-9]%', s)
     charging = True if se(' [Cc]harging', s) else False
     if len(r) == 1:
@@ -80,6 +81,7 @@ def main():
         while True:
             prevPerc, prevCharging = perc, charging
             perc, charging = getPerc()
+            print(perc, charging)
             prevH, prevW = h, w
             h, w = sc.getmaxyx()
             #raise Exception(perc)

@@ -2,6 +2,10 @@ use std::process::Command;
 
 use regex::Regex;
 
+pub fn get_acpi_output() -> Result<String, String> {
+    get_shell_output("acpi")
+}
+
 pub fn get_shell_output(cmd: &str) -> Result<String, String> {
     if !cfg!(target_os = "windows") {
         let output = Command::new("sh")

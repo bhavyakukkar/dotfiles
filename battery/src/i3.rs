@@ -7,10 +7,6 @@ use std::{
 
 use battery::*;
 
-fn get_acpi_output() -> Result<String, String> {
-    get_shell_output("acpi")
-}
-
 fn main() {
     let colors: [String; 6] = {
         let mut args = env::args().take(7).collect::<Vec<String>>();
@@ -29,7 +25,7 @@ fn main() {
         let perc = get_correct_percentage(&acpi_output).unwrap();
         let last_perc = perc;
         let stat = get_charging_status(&acpi_output);
-        let mut vol = get_shell_output("/home/bhavya/programs/scripts/echovol").unwrap();
+        let mut vol = get_shell_output("$HOME/dev/scripts/echovol").unwrap();
         vol = vol[8..(vol.len() - 1)].to_string();
 
         let (battery_fg, _): (&str, &str) = if stat {

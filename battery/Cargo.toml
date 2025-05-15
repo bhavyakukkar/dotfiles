@@ -14,13 +14,13 @@ regex = "1.10.2"
 name = "battery"
 
 [[bin]]
-name = "main"
+name = "battery"
 path = "src/main.rs"
 
 [[bin]]
-name = "sway"
+name = "battery-sway"
 path = "src/sway.rs"
 
 [[bin]]
-name = "i3"
+name = "battery-i3"
 path = "src/i3.rs"

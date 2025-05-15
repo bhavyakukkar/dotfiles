@@ -113,7 +113,7 @@ fn main() {
     enable_raw_mode().unwrap();
 
     loop {
-        let acpi_output: String = get_shell_output("upower -d | grep percentage").unwrap();
+        let acpi_output: String = get_acpi_output().unwrap();
 
         let new_perc = get_correct_percentage(&acpi_output).unwrap();
         let new_stat = get_charging_status(&acpi_output);
