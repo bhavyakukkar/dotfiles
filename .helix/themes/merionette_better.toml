@@ -1,0 +1,4 @@
+inherits = "merionette"
+
+"error" = "pink2"
+"warning" = "orange1"

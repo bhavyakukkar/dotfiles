@@ -1,0 +1,4 @@
+inherits = "dark_high_contrast"
+
+
+"ui.selection.primary" = { bg = "deep_blue" }

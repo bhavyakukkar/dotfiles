@@ -1,0 +1,5 @@
+inherits = "molokai"
+
+"error" = { fg = "red", modifiers = ["bold"] }
+
+[palette]
