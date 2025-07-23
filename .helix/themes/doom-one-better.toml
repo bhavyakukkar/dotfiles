@@ -1,0 +1,5 @@
+inherits = "doom-one"
+
+"ui.bufferline" = { fg = "purple" }
+"ui.bufferline.active" = { fg = "blue", bg = "bg" }
+"ui.cursor" = { bg = "blue", fg = "bg" }
