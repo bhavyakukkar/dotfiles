@@ -5,6 +5,7 @@ theme = "amberwood_better"
 rulers = [101]
 bufferline = "multiple"
 scrolloff = 1
+line-number = "relative"
 
 [editor.file-picker]
 git-ignore = false
@@ -30,6 +31,9 @@ C-h = "goto_previous_buffer"
 
 C-S-w = ":buffer-close"
 C-S-A-w = ":buffer-close!"
+
+[keys.normal."V"]
+m = ":set gutters.layout [\"diff\"]" # markdown
 
 [keys.select]
 W = 'extend_next_sub_word_start'
