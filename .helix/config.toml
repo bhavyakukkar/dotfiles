@@ -33,12 +33,16 @@ C-S-w = ":buffer-close"
 C-S-A-w = ":buffer-close!"
 
 [keys.normal."V"]
-m = ":set gutters.layout [\"diff\"]" # markdown
+m = """:set gutters.layout ["diff"]""" # markdown
+ret = """:set gutters.layout ["diagnostics","spacer","line-numbers","spacer","diff"]"""
 
 [keys.select]
 W = 'extend_next_sub_word_start'
 B = 'extend_prev_sub_word_start'
 E = 'extend_next_sub_word_end'
+
+C-S-w = ":buffer-close"
+C-S-A-w = ":buffer-close!"
 
 [keys.normal."space"]
 E = "file_picker_in_current_buffer_directory"
