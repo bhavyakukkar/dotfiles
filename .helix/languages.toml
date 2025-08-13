@@ -1,6 +1,21 @@
 # default value assumed to be https://github.com/helix-editor/helix/blob/24.07/languages.toml#L150C1-L156C55
 [language-server.rust-analyzer.config]
 numThreads = 6
+# Coq support: https://github.com/helix-editor/helix/pull/12202/commits/79bd17cad94a6cbf6a525fe9a1d0b0b7aeeaf844
+[language-server]
+coq-lsp = { command = "coq-lsp" }
+[[language]]
+name = "coq"
+scope = "source.v"
+file-types = ["v"]
+block-comment-tokens = { start = "(*", end = "*)" }
+language-servers = [ "coq-lsp" ]
+indent = { tab-width = 2, unit = "  " }
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
 
 [language-server.typescript-language-server]
 config = { format = { semicolons = "insert" } }
