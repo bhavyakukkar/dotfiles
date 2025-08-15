@@ -31,6 +31,7 @@ C-h = "goto_previous_buffer"
 
 C-S-w = ":buffer-close"
 C-S-A-w = ":buffer-close!"
+C-S-q = ":quit"
 
 [keys.normal."V"]
 m = """:set gutters.layout ["diff"]""" # markdown
