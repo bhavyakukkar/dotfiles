@@ -94,7 +94,6 @@ fn fontify(mut percentage: u8) -> Vec<[[u8; 5]; 3]> {
 
 fn main() {
     use cursor::{Hide, MoveTo, Show};
-    use event::{poll, read, Event, KeyCode, KeyModifiers};
     use std::io::Write;
     use style::{Color, Print, SetForegroundColor};
     use terminal::{
@@ -115,7 +114,12 @@ fn main() {
     loop {
         let acpi_output: String = get_acpi_output().unwrap();
 
-        let new_perc = get_correct_percentage(&acpi_output).unwrap();
+        let Ok(new_perc) = get_correct_percentage(&acpi_output) else {
+            if should_exit() {
+                break;
+            }
+            continue;
+        };
         let new_stat = get_charging_status(&acpi_output);
 
         let (new_width, new_height) = size().unwrap();
@@ -172,22 +176,31 @@ fn main() {
         //println!("{} {}", percentage, if charging { "Charging" } else { "Discharging" });
         //println!("{:?}", font);
         //sleep(Duration::from_secs(1));
-        if poll(Duration::from_secs(1)).unwrap() {
-            if let Event::Key(key) = read().unwrap() {
-                if let KeyCode::Esc = key.code {
-                    break;
-                } else if let KeyCode::Char('q') = key.code {
-                    break;
-                } else if let KeyCode::Char('c') = key.code {
-                    if key.modifiers == KeyModifiers::CONTROL {
-                        break;
-                    }
-                }
-            }
+        if should_exit() {
+            break;
         }
     }
 
     disable_raw_mode().unwrap();
     queue!(stdout, Show, LeaveAlternateScreen,).unwrap();
     stdout.flush().unwrap();
+}
+
+fn should_exit() -> bool {
+    use event::{poll, read, Event, KeyCode, KeyModifiers};
+
+    if poll(Duration::from_secs(1)).unwrap() {
+        if let Event::Key(key) = read().unwrap() {
+            if let KeyCode::Esc = key.code {
+                return true;
+            } else if let KeyCode::Char('q') = key.code {
+                return true;
+            } else if let KeyCode::Char('c') = key.code {
+                if key.modifiers == KeyModifiers::CONTROL {
+                    return true;
+                }
+            }
+        }
+    }
+    false
 }
